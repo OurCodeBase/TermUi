@@ -140,7 +140,7 @@ phase1(){
       mv "~/.termux" "~/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
     dnload "https://github.com/ytstrange/TermUi/blob/main/termux.zip?raw=true"
-    unzip termux.zip
+    unzip -d ${HOME} termux.zip
     rm termux.zip
     echo "1" >> ~/.ui/p1.dl
     phase2
