@@ -106,7 +106,7 @@ dnload(){
 
 phase2(){
   if [[ -f "~/.ui/p2.dl" ]]; then
-    #nothing happens
+    echo
   else
     echo
     git clone https://github.com/ohmyzsh/ohmyzsh.git "~/.oh-my-zsh" --depth 1
@@ -133,7 +133,7 @@ phase2(){
 
 phase1(){
   if [[ -f "~/.ui/p1.dl" ]]; then
-    # nothing happens
+    echo
   else
     echo
     if [[ -d "~/.termux" ]]; then
