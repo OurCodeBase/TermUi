@@ -189,3 +189,4 @@ starts(){
   eval="termux-reload-settings"
   setup_storage
 }
+starts
