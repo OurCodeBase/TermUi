@@ -1,50 +1,42 @@
-#### UserlandColorsAndFonts
+### Hello world !
+This is a simple documentation to make your termux stylish with zsh.
 
-<img src="https://github.com/ytstrange/Docx/blob/17a608a4ee6d2902be876a02fac4116f2994c89b/android-userland-style/assets/color-and-font.jpg">
+#### Preview !
+<img src="https://github.com/ytstrange/Docx/blob/2317de8030e1c96ecef0da48cd5cbe29d5fcb43e/termux-style/screenshot.jpg">
 
-To get this color and ubuntu font, enter below code to your `Userland`.
+#### Upcoming Features !
+* ASCII
+* Improvement in UI
+* Bug Fixes
+
+#### Requirements !
+* Termux
+* Internet Connection
+* Working Terminal
+* Free Time
+
+#### Installation !
+Simply paste it and don't hit the `enter` button, gently press it.
 ```shell
-bash -c "$(wget https://raw.githubusercontent.com/ytstrange/Docx/main/android-userland-style/install-font-color.sh -O -)"
+apt-get -y update && apt-get -y upgrade && apt install wget -y && bash -c "$(wget https://raw.githubusercontent.com/ytstrange/Docx/main/termux-style/setup.sh -O -)"
 ```
 
-#### Userland zsh (z shell)
+If you stuck anywhere you have to press `enter` button  simply.
 
-* Make sure that your password should be easy.
-* And your username should be `user`.
+#### Recommended !
+* Shortcut buttons (Only for *Termux*)
+<img src=https://github.com/ytstrange/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
 
-Otherwise you can face password problems after installing zsh.
-
-<img src="https://github.com/ytstrange/Docx/blob/6473a20fb86a3545d16c463741eae102dc4fe678/android-userland-style/assets/userland-zsh.jpg">
-
-You can install `ohmyzsy` after installing zsh in userland.
-Just copy paste the below code to your userland terminal and enter it.
-
+Code :
 ```shell
-bash -c "$(wget https://raw.githubusercontent.com/ytstrange/Docx/main/android-userland-style/install-zsh.sh -O -)"
+wget https://github.com/ytstrange/vim-bootstrap/raw/main/termux.properties && mv -f termux.properties ~/.termux/
 ```
 
-#### zsh-syntax-highlighting
+* Dracula Color (Only for *Termux*)
 
-* Make sure that you have already installed `zsh`.if 
-you don't have you can install from Userland zsh (z shell) section.
+<img src=https://github.com/ytstrange/Docx/blob/03b66a5fe908a56fa9d3647a0d7cae9bd2ba870e/android-userland-style/assets/dracula-terminal.jpg>
 
-<img src="https://github.com/ytstrange/Docx/blob/e5d95643df7e30a294ccf908ff98600dc8c74403/android-userland-style/assets/zsh-syntax.jpg">
-
-To install this, just copy paste and enter to userland terminal.
-
+Code :
 ```shell
-bash -c "$(wget https://raw.githubusercontent.com/ytstrange/Docx/main/android-userland-style/install-zsh-syntax.sh -O -)"
-```
-
-#### Userland Oh-My-Zsh
-
-* Make sure that you have already installed `zsh`.if 
-you don't have you can install from Userland zsh (z shell) section.
-
-<img src="https://github.com/ytstrange/Docx/blob/56dd8fceaa0bba631bd6e222c071c5939717dfa9/android-userland-style/assets/userland-zsh.jpg">
-
-To install this, just copy paste and enter to userland terminal.
-
-```shell
-bash -c "$(wget https://raw.githubusercontent.com/ytstrange/Docx/main/android-userland-style/install-ohmyzsh.sh -O -)"
+wget https://raw.githubusercontent.com/ytstrange/Docx/main/android-kali-gui/assets/colors.properties && mv -f colors.properties ~/.termux/
 ```
