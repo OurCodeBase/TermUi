@@ -18,7 +18,7 @@ This is a simple documentation to make your termux stylish with zsh.
 #### Installation !
 Simply paste it and don't hit the `enter` button, gently press it.
 ```shell
-apt-get -y update && apt-get -y upgrade && apt install wget -y && bash -c "$(wget https://raw.githubusercontent.com/ytstrange/TermUi/main/setup.sh -O -)"
+apt-get -y update && apt-get -y upgrade && apt install wget -y && bash -c "$(wget https://raw.githubusercontent.com/ytstrange/TermUi/main/install.sh -O -)"
 ```
 
 If you stuck anywhere you have to press `enter` button  simply.
