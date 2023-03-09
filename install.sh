@@ -76,17 +76,18 @@ pkg_install(){
   _pkg_=${1}
   ping_ok
   bl -s "Installing ${1}..."
-  echo
+  echo -e "\e[0;2m\e[3m"
   apt install ${_pkg_} -y || sudo apt install ${_pkg_} -y
-  echo
+  echo -e "\e[0;m"
 }
 
 dnload(){
   _pkg_=$(dpkg -s curl | grep '^Status:')
   _pkg_out="Status: install ok installed"
   if [[ "${_pkg_}"=="${_pkg_out}" ]]; then
-    echo
+    echo -e "\e[0;2m\e[3m"
     curl -OL ${1}
+    echo -e "\e[0;m"
   else
     echo
     pkg_install curl && echo && curl -OL ${1}
@@ -123,7 +124,7 @@ phase2(){
 }
 
 phase1(){
-  if [[ -f "~/.ui/p1.dl" ]]; then
+  if [[ -e "~/.ui/p1.dl" ]]; then
     echo
   else
     echo
