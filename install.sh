@@ -66,8 +66,9 @@ ping_ok(){
   if [[ "${?}" != 0 ]];then
     echo
 	  bl -ai "Please Check Your Internet Connection...";
-    sleep 0.7
-	  exit 0
+    return 1
+  else
+    return 0
 	fi
 }
 
@@ -160,7 +161,7 @@ setup_storage(){
   if [[ -d "~/storage/shared" ]]; then
     bl -si "Storage permission is already allowed."
   else
-    bl -ai "Please allow storage permission !"
+    bl -si "Please allow storage permission !"
     eval "termux-setup-storage"
   fi
   config_files
