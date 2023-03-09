@@ -139,7 +139,7 @@ phase1(){
     if [[ -d "~/.termux" ]]; then
       mv "~/.termux" "~/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/ytstrange/TermUi/blob/main/termux.zip?raw=true"
+    dnload "https://github.com/strangecode4u/TermUi/blob/main/termux.zip?raw=true"
     unzip -d ${HOME} termux.zip
     rm termux.zip
     echo "1" >> ~/.ui/p1.dl
@@ -176,8 +176,8 @@ setup_storage(){
 
 starts(){
   pkg_install curl
-  dnload "https://raw.githubusercontent.com/ytstrange/TermUi/main/assets/colors.properties"
-  dnload "https://github.com/ytstrange/TermUi/blob/main/assets/font.ttf?raw=true"
+  dnload "https://raw.githubusercontent.com/strangecode4u/TermUi/main/assets/colors.properties"
+  dnload "https://github.com/strangecode4u/TermUi/blob/main/assets/font.ttf?raw=true"
   if [[ -d "~/.termux" ]]; then
     mv -f colors.properties ~/.termux/
     mv -f font.ttf ~/.termux/
