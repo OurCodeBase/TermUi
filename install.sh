@@ -28,11 +28,11 @@ bl(){
         var3+="${italic}"
         ;;
       a)
-        alert="\e[0;31m[!q] "
+        alert="\e[0;31m\e[1m[!] "
         var3="${alert}"
         ;;
       s)
-        success="\e[0;32m[+] "
+        success="\e[0;32m\e[1m[+] "
         var3="${success}"
         ;;
       ?)
@@ -62,34 +62,23 @@ bl(){
 }
 
 ping_ok(){
-  ping_=$(ping -c 3 "cutt.ly")
-  _ping_="ping: unknown host cutt.ly"
-  if [[ "${ping_}"=="${_ping_}" ]]; then
-    return 0
-  else
-    return 1
-  fi
+  (ping -c 3 google.com) &> /dev/null 2>&1
+  if [[ "${?}" != 0 ]];then
+    echo
+	  ./bl -ai "Please Check Your Internet Connection...";
+    sleep 0.7
+	  exit 0
+	fi
 }
 
 pkg_install(){
   echo
-  if [[ ping_ok ]]; then
-    echo
-    bl -s "Installing ${1}..."
-    echo
-    {
-      _pkg_="apt install ${1} -y"
-      eval=${_pkg_}
-    }||{
-      _pkg_="sudo apt install ${1} -y"
-      eval=${_pkg_}
-    }
-  else
-    echo
-    bl -a "Please check your Internet Connection."
-    echo
-    exit 1
-  fi
+  _pkg_=${1}
+  ping_ok
+  bl -s "Installing ${1}..."
+  echo
+  apt install ${_pkg_} -y || sudo apt install ${_pkg_} -y
+  echo
 }
 
 dnload(){
@@ -113,6 +102,7 @@ phase2(){
     if [[ -f "~/.zshrc" ]]; then
       mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
+  fi
   cp "~/.oh-my-zsh/templates/zshrc.zsh-template" "~/.zshrc"
   sed -i '/^ZSH_THEME/d' "~/.zshrc"
   sed -i '1iZSH_THEME="agnoster"' "~/.zshrc"
@@ -126,9 +116,10 @@ phase2(){
   chmod +x ~/.termux/fonts.sh
   bash ~/.termux/fonts.
   rm -rf ../usr/etc/motd* &> /dev/null
+  echo "1" > ~/.ui/p2.dl
   echo
   bl -s "Please restart your termux app."
-  fi
+  exit
 }
 
 phase1(){
@@ -139,7 +130,7 @@ phase1(){
     if [[ -d "~/.termux" ]]; then
       mv "~/.termux" "~/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/strangecode4u/TermUi/blob/main/termux.zip?raw=true"
+    dnload "https://github.com/ytstrange/TermUi/blob/main/termux.zip?raw=true"
     unzip -d ${HOME} termux.zip
     rm termux.zip
     echo "1" >> ~/.ui/p1.dl
@@ -176,8 +167,8 @@ setup_storage(){
 
 starts(){
   pkg_install curl
-  dnload "https://raw.githubusercontent.com/strangecode4u/TermUi/main/assets/colors.properties"
-  dnload "https://github.com/strangecode4u/TermUi/blob/main/assets/font.ttf?raw=true"
+  dnload "https://raw.githubusercontent.com/ytstrange/TermUi/main/assets/colors.properties"
+  dnload "https://github.com/ytstrange/TermUi/blob/main/assets/font.ttf?raw=true"
   if [[ -d "~/.termux" ]]; then
     mv -f colors.properties ~/.termux/
     mv -f font.ttf ~/.termux/
