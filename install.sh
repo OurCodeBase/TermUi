@@ -75,7 +75,7 @@ pkg_install(){
   echo
   _pkg_=${1}
   ping_ok
-  bl -s "Installing ${1}..."
+  bl -si "Installing ${1}..."
   echo -e "\e[0;2m\e[3m"
   apt install ${_pkg_} -y || sudo apt install ${_pkg_} -y
   echo -e "\e[0;m"
@@ -98,7 +98,7 @@ phase2(){
   if [[ -f "~/.ui/p2.dl" ]]; then
     echo
   else
-    echo
+    echo -e "\e[0;2m\e[3m"
     git clone https://github.com/ohmyzsh/ohmyzsh.git "~/.oh-my-zsh" --depth 1
     if [[ -f "~/.zshrc" ]]; then
       mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
@@ -118,7 +118,7 @@ phase2(){
   bash ~/.termux/fonts.
   rm -rf ../usr/etc/motd* &> /dev/null
   echo "1" > ~/.ui/p2.dl
-  echo
+  echo -e "\e[0;m"
   bl -s "Please restart your termux app."
   exit
 }
@@ -158,27 +158,12 @@ config_files(){
 setup_storage(){
   echo
   if [[ -d "~/storage/shared" ]]; then
-    bl -s "Storage permission is already allowed."
+    bl -si "Storage permission is already allowed."
   else
-    bl -a "Please allow storage permission !"
+    bl -ai "Please allow storage permission !"
     eval "termux-setup-storage"
   fi
   config_files
 }
 
-starts(){
-  pkg_install curl
-  dnload "https://raw.githubusercontent.com/ytstrange/TermUi/main/assets/colors.properties"
-  dnload "https://github.com/ytstrange/TermUi/blob/main/assets/font.ttf?raw=true"
-  if [[ -d "~/.termux" ]]; then
-    mv -f colors.properties ~/.termux/
-    mv -f font.ttf ~/.termux/
-  else
-    mkdir ~/.termux
-    mv colors.properties ~/.termux/
-    mv font.ttf ~/.termux/
-  fi
-  eval="termux-reload-settings"
-  setup_storage
-}
-starts
+setup_storage
