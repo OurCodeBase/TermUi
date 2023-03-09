@@ -65,7 +65,7 @@ ping_ok(){
   (ping -c 3 google.com) &> /dev/null 2>&1
   if [[ "${?}" != 0 ]];then
     echo
-	  ./bl -ai "Please Check Your Internet Connection...";
+	  bl -ai "Please Check Your Internet Connection...";
     sleep 0.7
 	  exit 0
 	fi
