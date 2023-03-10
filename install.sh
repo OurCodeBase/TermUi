@@ -78,6 +78,7 @@ Stream(){
   identity=${3}
   if [[ -z ${3} ]]; then
     identity=${2}
+    args=""
   fi
   count=0
   total=34
@@ -86,7 +87,7 @@ Stream(){
   echo "Initializing ${identity}"
   echo
   while [ ${count} -lt ${total} ]; do
-    ${process}
+    eval ${process} ${args}
     count=$(( ${count} + 1 ))
     pd=$(( ${count} * 73 / ${total} ))
     printf "\r%3d.%1d%% %.${pd}s" $(( ${count} * 100 / ${total} )) $(( (${count} * 1000 / ${total}) % 10 )) ${pstrl}
@@ -95,13 +96,10 @@ Stream(){
 }
 
 pkg_install(){
-  echo
   _pkg_=${1}
   ping_ok
-  bl -si "Installing ${1}..."
-  echo -e "\e[0;2m\e[3m"
-  apt install ${_pkg_} -y || sudo apt install ${_pkg_} -y
-  echo -e "\e[0;m"
+  echo
+  apt install ${_pkg_} -y &> /dev/null || sudo apt install ${_pkg_} -y &> /dev/null
 }
 
 dnload(){
@@ -172,14 +170,14 @@ phase1(){
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
-    phase2
+    phase1
   fi
 }
 
 depends(){
   echo
-  pkg_install git
-  pkg_install zsh
+  Stream pkg_install git "Install Git"
+  Stream pkg_install zsh "Install Zsh"
   phase1
 }
 
