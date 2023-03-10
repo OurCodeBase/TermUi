@@ -107,10 +107,16 @@ Process(){
       ;;
     --gitcl)
       process_variable=""
-      process_variable+="git clone "
-      process_variable+="${process_args}"
+      process_variable+="git clone"
+      process_variable+=" ${process_args}"
+      gitcl_file="${process_identity}"
+      process_identity="${4}"
+      process_variable+=" ${gitcl_file}"
+      process_variable+=" --depth 1"
       process_variable+=" &> /dev/null"
-      # eval "${process_variable}" || exit
+      # eval "${process_variable}" ||
+      echo ${process_variable} >> infi
+      exit
       ;;
     --dnload)
       process_variable=""
@@ -127,12 +133,6 @@ Process(){
       process_variable+=" &> /dev/null"
       # eval "${process_variable}" || exit
       ;;
-    --func)
-      process_variable=""
-      process_variable+="${process_args}"
-      process_variable+=" &> /dev/null"
-      # eval "${process_variable}" || exit
-      ;;
     *)
       exit
       ;;
@@ -141,7 +141,7 @@ Process(){
   total=34
   pstr="[======================================]"
   echo
-  echo "Initialising ${process_identity}"
+  bl -si "Initialising ${process_identity}"
   echo
   while [ $count -lt $total ]; do
     eval ${process_variable} || exit
@@ -194,7 +194,7 @@ phase2(){
 
 phase1(){
   if [[ -f "${HOME}/.ui/p1.dl" ]]; then
-    Process --func phase2 "Installing Phase 2"
+    phase2
   else
     echo
     if [[ -d "${HOME}/.termux" ]]; then
@@ -206,14 +206,14 @@ phase1(){
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
-    Process --func phase2 "Installing Phase 2"
+    phase2
   fi
 }
 
 depends(){
   Process --install git "Installing Git"
   Process --install zsh "Installing Zsh"
-  Process --func phase1 "Installing Phase 1"
+  phase1
 }
 
 config_files(){
