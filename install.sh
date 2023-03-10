@@ -126,7 +126,7 @@ Process(){
     --unzip)
       process_variable=""
       process_variable+="unzip"
-      process_variable+=" -d ${HOME}"
+      process_variable+=" -d ~/"
       process_variable+=" ${process_args}"
       process_variable+=" &> /dev/null"
       # eval "${process_variable}" || exit
@@ -200,7 +200,7 @@ phase1(){
     fi
     Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi"
     echo -e "\e[0;2m\e[3m"
-    Process --unzip TermUi.zip "Extracting TermUi"
+    Process --unzip "TermUi.zip" "Extracting TermUi"
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
