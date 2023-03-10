@@ -96,7 +96,7 @@ dnload(){
 }
 
 phase2(){
-  if [[ -e "~/.ui/p2.dl" ]]; then
+  if [[ -e "${HOME}/.ui/p2.dl" ]]; then
     echo
     bl -si "Phase2 Already Passed..."
     echo
@@ -105,30 +105,30 @@ phase2(){
     bl -si "Initializing Phase2..."
     {
       echo -e "\e[0;2m\e[3m"
-      git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh" --depth 1
+      git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1
     } && {
-      if [[ -e "~/.zshrc" ]]; then
-        mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
+      if [[ -e "${HOME}/.zshrc" ]]; then
+        mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
       fi
-      cp "~/.oh-my-zsh/templates/zshrc.zsh-template" "~/.zshrc"
-      sed -i '/^ZSH_THEME/d' "~/.zshrc"
-      sed -i '1iZSH_THEME="agnoster"' "~/.zshrc"
-      echo "alias chcolor='~/.termux/colors.sh'" >> "~/.zshrc"
-      echo "alias chfont='~/.termux/fonts.sh'" >> "~/.zshrc"
+      cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc"
+      sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc"
+      sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc"
+      echo "alias chcolor='${HOME}/.termux/colors.sh'" >> "${HOME}/.zshrc"
+      echo "alias chfont='${HOME}/.termux/fonts.sh'" >> "${HOME}/.zshrc"
     } && {
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "~/.zsh-syntax-highlighting" --depth 1
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1
     } && {
-      echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "~/.zshrc"
+      echo "source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "${HOME}/.zshrc"
     } && {
       chsh -s zsh
     } && {
       echo -e ""
-      chmod +x ~/.termux/colors.sh
-      chmod +x ~/.termux/fonts.sh
-      ~/.termux/colors.sh
-      ~/.termux/fonts.sh
+      chmod +x ${HOME}/.termux/colors.sh
+      chmod +x ${HOME}/.termux/fonts.sh
+      ${HOME}/.termux/colors.sh
+      ${HOME}/.termux/fonts.sh
       echo
-      echo "1" >> "~/ui/p2.dl"
+      echo "1" >> "${HOME}/ui/p2.dl"
       echo -e "\e[0;m"
       echo -e "Please restart Termux app..."
       echo
@@ -140,20 +140,20 @@ phase2(){
 }
 
 phase1(){
-  if [[ -e "~/.ui/p1.dl" ]]; then
+  if [[ -e "${HOME}/.ui/p1.dl" ]]; then
     echo
     phase2
   else
     echo
-    if [[ -d "~/.termux" ]]; then
-      mv "~/.termux" "~/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
+    if [[ -d "${HOME}/.termux" ]]; then
+      mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
     dnload "https://github.com/ytstrange/TermUi/blob/main/termux.zip?raw=true"
     echo -e "\e[0;2m\e[3m"
     unzip -d ${HOME} termux.zip
     echo -e "\e[0;m"
     rm termux.zip
-    echo "1" > ~/.ui/p1.dl
+    echo "1" > ${HOME}/.ui/p1.dl
     phase2
   fi
 }
@@ -166,16 +166,16 @@ depends(){
 }
 
 config_files(){
-  if [[ -d "~/.ui" ]]; then
+  if [[ -d "${HOME}/.ui" ]]; then
     depends
   else
-    mkdir ~/.ui && depends
+    mkdir ${HOME}/.ui && depends
   fi
 }
 
 setup_storage(){
   echo
-  if [[ -d "~/storage/shared" ]]; then
+  if [[ -d "${HOME}/storage/shared" ]]; then
     bl -si "Storage permission is already allowed..."
   else
     bl -si "Please allow storage permission..."
