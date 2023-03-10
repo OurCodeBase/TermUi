@@ -161,7 +161,7 @@ setup_storage(){
   if [[ -d "~/storage/shared" ]]; then
     bl -si "Storage permission is already allowed."
   else
-    bl -si "Please allow storage permission !"
+    bl -si "Please allow storage permission..."
     eval "termux-setup-storage"
   fi
   config_files
