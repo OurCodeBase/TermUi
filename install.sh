@@ -223,6 +223,7 @@ config_files(){
 }
 
 setup_storage(){
+  clear
   echo
   if [[ -d "${HOME}/storage/shared" ]]; then
     bl -si "Storage permission is already allowed..."
