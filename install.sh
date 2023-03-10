@@ -87,7 +87,7 @@ dnload(){
   _pkg_out="Status: install ok installed"
   if [[ "${_pkg_}"=="${_pkg_out}" ]]; then
     echo -e "\e[0;2m\e[3m"
-    curl -OL ${1}
+    wget ${1}
     echo -e "\e[0;m"
   else
     echo
