@@ -106,6 +106,7 @@ phase2(){
     {
       echo -e "\e[0;2m\e[3m"
       git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1
+      echo
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
         mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
