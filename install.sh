@@ -85,7 +85,6 @@ Process(){
   elif [[ -z ${process_identity} ]]; then
     exit
   fi
-
   if ping_ok; then
     exit
   fi
@@ -200,15 +199,14 @@ phase1(){
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
-    phase1
+    Process --func phase2 "Installing Phase 2"
   fi
 }
 
 depends(){
-  echo
-  Stream pkg_install git "Install Git"
-  Stream pkg_install zsh "Install Zsh"
-  phase1
+  Process --install git "Installing Git"
+  Process --install zsh "Installing Zsh"
+  Process --func phase1 "Installing Phase 1"
 }
 
 config_files(){
