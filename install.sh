@@ -115,8 +115,6 @@ Process(){
       process_variable+=" --depth 1"
       process_variable+=" &> /dev/null"
       # eval "${process_variable}" ||
-      echo ${process_variable} >> infi
-      exit
       ;;
     --dnload)
       process_variable=""
@@ -160,8 +158,8 @@ phase2(){
     bl -si "Initializing Phase2..."
     {
       echo -e "\e[0;2m\e[3m"
-      git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1 &> /dev/null || exit
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1 &> /dev/null
+      Process --gitcl "https://github.com/ohmyzsh/ohmyzsh.git" "${HOME}/.oh-my-zsh" "Downloading OhMyZsh"
+      Process --gitcl "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}/.zsh-syntax-highlighting" "Downloading zsh-syntax-highlighting"
       echo
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
