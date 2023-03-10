@@ -129,7 +129,7 @@ phase2(){
       ${HOME}/.termux/colors.sh
       ${HOME}/.termux/fonts.sh
       echo
-      echo "1" >> "${HOME}/ui/p2.dl"
+      echo "1" >> "${HOME}/.ui/p2.dl"
       echo -e "\e[0;m"
       echo -e "Please restart Termux app..."
       echo
