@@ -95,14 +95,13 @@ dnload(){
   fi
 }
 
-phase2(){
-  if [[ -f "$config/phase2.har" ]]; then
+phase3(){
+  if [[ -f "~/ui/p2.dl" ]]; then
     #statements
-    echo -e "$Success Phase2 Already Passed !$enc"
+    echo -e "Phase2 Already Passed !"
     echo ""
   else
-    echo -e "$Success Initializing...Phase2$enc"
-    echo -e "$dim$dim"
+    echo -e "Initializing...Phase2"
     {
       git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh" --depth 1
     }&&{
@@ -122,26 +121,22 @@ phase2(){
       }&&{
           chsh -s zsh
       }&&{
-          echo -e "$enc"
+          echo -e ""
           chmod +x $HOME/.termux/colors.sh
           $HOME/.termux/colors.sh
           echo -e "$enc"
           chmod +x $HOME/.termux/fonts.sh
           $HOME/.termux/fonts.sh
         
-          echo "True" >> "$config/phase2.har"
+          echo "1" > "~/ui/p2.dl"
           echo ""
-          echo -e "$Success Passed Phase2$enc"
-          echo ""
-          echo -e "$Success Setup Complete Successfully !$enc"
-          echo ""
-          echo -e "$Success Please restart Termux app..."
+          echo -e "Please restart Termux app..."
           echo ""
           cd
           rm -rf ../usr/etc/motd* &> /dev/null
           exit
-        }
-    fi
+      }
+  fi
 }
 
 phase2(){
@@ -176,6 +171,7 @@ phase2(){
 phase1(){
   if [[ -e "~/.ui/p1.dl" ]]; then
     echo
+    phase3
   else
     echo
     if [[ -d "~/.termux" ]]; then
@@ -187,9 +183,8 @@ phase1(){
     echo -e "\e[0;m"
     rm termux.zip
     echo "1" > ~/.ui/p1.dl
-    phase2
+    phase3
   fi
-  phase2
 }
 
 depends(){
