@@ -133,9 +133,11 @@ phase1(){
       mv "~/.termux" "~/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
     dnload "https://github.com/ytstrange/TermUi/blob/main/termux.zip?raw=true"
+    echo -e "\e[0;2m\e[3m"
     unzip -d ${HOME} termux.zip
+    echo -e "\e[0;m"
     rm termux.zip
-    echo "1" >> ~/.ui/p1.dl
+    echo "1" > ~/.ui/p1.dl
     phase2
   fi
   phase2
@@ -159,7 +161,7 @@ config_files(){
 setup_storage(){
   echo
   if [[ -d "~/storage/shared" ]]; then
-    bl -si "Storage permission is already allowed."
+    bl -si "Storage permission is already allowed..."
   else
     bl -si "Please allow storage permission..."
     eval "termux-setup-storage"
