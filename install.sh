@@ -142,7 +142,7 @@ phase2(){
 phase1(){
   if [[ -e "~/.ui/p1.dl" ]]; then
     echo
-    phase3
+    phase2
   else
     echo
     if [[ -d "~/.termux" ]]; then
@@ -154,7 +154,7 @@ phase1(){
     echo -e "\e[0;m"
     rm termux.zip
     echo "1" > ~/.ui/p1.dl
-    phase3
+    phase2
   fi
 }
 
