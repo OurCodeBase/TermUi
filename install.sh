@@ -139,10 +139,10 @@ Process(){
   total=34
   pstr="[======================================]"
   echo
-  bl -si "Initialising ${process_identity}"
+  bl -si "${process_identity}"
   echo
   while [ $count -lt $total ]; do
-    eval ${process_variable} || exit
+    eval ${process_variable}
     count=$(( $count + 1 ))
     pd=$(( $count * 73 / $total ))
     printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
