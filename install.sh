@@ -86,11 +86,12 @@ Stream(){
   echo
   echo "Initializing ${identity}"
   echo
-  while [ ${count} -lt ${total} ]; do
-    eval ${process} ${args}
-    count=$(( ${count} + 1 ))
-    pd=$(( ${count} * 73 / ${total} ))
-    printf "\r%3d.%1d%% %.${pd}s" $(( ${count} * 100 / ${total} )) $(( (${count} * 1000 / ${total}) % 10 )) ${pstrl}
+  while [ $count -lt $total ]; do
+    pkg_install
+    sleep 3
+    count=$(( $count + 1 ))
+    pd=$(( $count * 73 / $total ))
+    printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
   done
   echo
 }
