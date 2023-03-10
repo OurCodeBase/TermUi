@@ -147,11 +147,11 @@ phase1(){
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/ytstrange/TermUi/blob/main/termux.zip?raw=true"
+    dnload "https://github.com/ytstrange/TermUi/blob/main/TermUi.zip?raw=true"
     echo -e "\e[0;2m\e[3m"
-    unzip -d ${HOME} termux.zip
+    unzip -d ${HOME} TermUi.zip
     echo -e "\e[0;m"
-    rm termux.zip
+    rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
     phase2
   fi
