@@ -103,7 +103,7 @@ phase2(){
     bl -si "Initializing Phase2..."
     {
       echo -e "\e[0;2m\e[3m"
-      git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1
+      git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1 || exit
       git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1
       echo
     } && {
