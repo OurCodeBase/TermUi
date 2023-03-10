@@ -66,9 +66,9 @@ ping_ok(){
   if [[ "${?}" != 0 ]];then
     echo
 	  bl -ai "Please Check Your Internet Connection...";
-    return 1
-  else
     return 0
+  else
+    return 1
 	fi
 }
 
@@ -83,6 +83,10 @@ Process(){
   elif [[ -z ${process_args} ]]; then
     exit
   elif [[ -z ${process_identity} ]]; then
+    exit
+  fi
+
+  if ping_ok; then
     exit
   fi
   # args variable for Process
