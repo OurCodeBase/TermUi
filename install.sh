@@ -72,48 +72,73 @@ ping_ok(){
 	fi
 }
 
-Stream(){
-  process=${1}
-  args=${2}
-  identity=${3}
-  if [[ -z ${3} ]]; then
-    identity=${2}
-    args=""
+# Process --install figlet "Install Figlet"
+
+Process(){
+  process_func=${1} # install,git clone,dnload
+  process_args=${2} # args for install,git clone,dnload
+  process_identity=${3} # args for name
+  if [[ -z "${process_func}" ]]; then
+    exit
+  elif [[ -z ${process_args} ]]; then
+    exit
+  elif [[ -z ${process_identity} ]]; then
+    exit
   fi
+  # args variable for Process
+  # process_variable=""
+  case ${process_func} in
+    --install)
+      process_variable=""
+      _build_pkg_var1=$(pwd)
+      _build_pkg_var2="com.termux"
+      if [[ ${_build_pkg_var1==*"${_build_pkg_var2}"*} ]]; then
+        process_variable+="apt-get install "
+      else
+        process_variable+="sudo apt-get install "
+      fi
+      process_variable+="${process_args}"
+      process_variable+=" -y &> /dev/null"
+      # process_variable has apt
+      # eval "${process_variable}" || exit
+      ;;
+    --gitcl)
+      process_variable=""
+      process_variable+="git clone "
+      process_variable+="${process_args}"
+      process_variable+=" &> /dev/null"
+      # eval "${process_variable}" || exit
+      ;;
+    --dnload)
+      process_variable=""
+      process_variable+="curl -OL "
+      process_variable+="${process_args}"
+      process_variable+=" &> /dev/null"
+      # eval "${process_variable}" || exit
+      ;;
+    --func)
+      process_variable=""
+      process_variable+="${process_args}"
+      process_variable+=" &> /dev/null"
+      # eval "${process_variable}" || exit
+      ;;
+    *)
+      exit
+      ;;
+  esac
   count=0
   total=34
   pstr="[======================================]"
   echo
-  echo "Initializing ${identity}"
+  echo "Initialising ${process_identity}"
   echo
   while [ $count -lt $total ]; do
-    pkg_install
-    sleep 3
+    eval ${process_variable}
     count=$(( $count + 1 ))
     pd=$(( $count * 73 / $total ))
     printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
   done
   echo
-}
-
-pkg_install(){
-  _pkg_=${1}
-  ping_ok
-  echo
-  apt install ${_pkg_} -y &> /dev/null || sudo apt install ${_pkg_} -y &> /dev/null
-}
-
-dnload(){
-  _pkg_=$(dpkg -s curl | grep '^Status:')
-  _pkg_out="Status: install ok installed"
-  if [[ "${_pkg_}"=="${_pkg_out}" ]]; then
-    echo -e "\e[0;2m\e[3m"
-    curl -OL ${1}
-    echo -e "\e[0;m"
-  else
-    echo
-    pkg_install curl && echo && curl -OL ${1}
-  fi
 }
 
 phase2(){
