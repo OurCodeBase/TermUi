@@ -160,8 +160,8 @@ phase2(){
     bl -si "Initializing Phase2..."
     {
       echo -e "\e[0;2m\e[3m"
-      git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1 || exit
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1
+      git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1 &> /dev/null || exit
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1 &> /dev/null
       echo
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
@@ -200,9 +200,9 @@ phase1(){
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Installing TermUi"
+    Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi"
     echo -e "\e[0;2m\e[3m"
-    unzip -d ${HOME} TermUi.zip
+    Process --unzip TermUi.zip "Extracting TermUi"
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
