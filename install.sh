@@ -74,27 +74,19 @@ ping_ok(){
 
 Stream(){
   process=${1}
-  func=${2}
-  if [[ -z "${process}" ]]; then
-    bl -pb "Stream needs two arguments"
-    bl -p "1.Function 
-    2.Process name"
-    if [[ -z "${func}" ]]; then
-      #statements
-      bl -pb "Stream needs two arguments"
-      bl -p "1.Function 
-      2.Process name"
-    fi
+  args=${2}
+  identity=${3}
+  if [[ -z ${3} ]]; then
+    identity=${2}
   fi
   count=0
   total=34
   pstr="[======================================]"
   echo
-  echo "Initializing ${func}"
+  echo "Initializing ${identity}"
   echo
   while [ ${count} -lt ${total} ]; do
-    pkg_install
-    sleep 3
+    ${process}
     count=$(( ${count} + 1 ))
     pd=$(( ${count} * 73 / ${total} ))
     printf "\r%3d.%1d%% %.${pd}s" $(( ${count} * 100 / ${total} )) $(( (${count} * 1000 / ${total}) % 10 )) ${pstrl}
