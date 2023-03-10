@@ -104,6 +104,7 @@ phase2(){
     {
       echo -e "\e[0;2m\e[3m"
       git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh" --depth 1
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1
       echo
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
@@ -114,8 +115,6 @@ phase2(){
       sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc"
       echo "alias chcolor='${HOME}/.termux/colors.sh'" >> "${HOME}/.zshrc"
       echo "alias chfont='${HOME}/.termux/fonts.sh'" >> "${HOME}/.zshrc"
-    } && {
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-syntax-highlighting" --depth 1
     } && {
       echo "source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "${HOME}/.zshrc"
     } && {
@@ -128,7 +127,7 @@ phase2(){
       ${HOME}/.termux/fonts.sh
       echo "1" >> "${HOME}/.ui/p2.dl"
       echo
-      echo -e "Please restart Termux app..."
+      bl -si "Please restart Termux app..."
       echo
       cd
       rm -rf ../usr/etc/motd* &> /dev/null
