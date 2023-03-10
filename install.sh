@@ -87,7 +87,7 @@ dnload(){
   _pkg_out="Status: install ok installed"
   if [[ "${_pkg_}"=="${_pkg_out}" ]]; then
     echo -e "\e[0;2m\e[3m"
-    wget ${1}
+    curl -OL ${1}
     echo -e "\e[0;m"
   else
     echo
@@ -144,7 +144,7 @@ phase1(){
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/strangecode4u/TermUi.zip/blob/main/?raw=true"
+    dnload "https://github.com/strangecode4u/TermUi/blob/main/TermUi.zip?raw=true"
     echo -e "\e[0;2m\e[3m"
     unzip -d ${HOME} TermUi.zip
     echo -e "\e[0;m"
