@@ -125,12 +125,11 @@ phase2(){
       echo -e "\e[0;m"
       ${HOME}/.termux/colors.sh
       ${HOME}/.termux/fonts.sh
+      echo
       echo "1" >> "${HOME}/.ui/p2.dl"
-      echo
       bl -si "Please restart Termux app..."
+      rm -rf ${HOME}/../usr/etc/motd* &> /dev/null
       echo
-      cd
-      rm -rf ../usr/etc/motd* &> /dev/null
       exit
     }
   fi
