@@ -121,14 +121,13 @@ phase2(){
     } && {
       chsh -s zsh
     } && {
-      echo -e ""
       chmod +x ${HOME}/.termux/colors.sh
       chmod +x ${HOME}/.termux/fonts.sh
+      echo -e "\e[0;m"
       ${HOME}/.termux/colors.sh
       ${HOME}/.termux/fonts.sh
-      echo
       echo "1" >> "${HOME}/.ui/p2.dl"
-      echo -e "\e[0;m"
+      echo
       echo -e "Please restart Termux app..."
       echo
       cd
@@ -147,7 +146,7 @@ phase1(){
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/ytstrange/TermUi/blob/main/TermUi.zip?raw=true"
+    dnload "https://github.com/ytstrange/TermUi/blob/main/?raw=true"
     echo -e "\e[0;2m\e[3m"
     unzip -d ${HOME} TermUi.zip
     echo -e "\e[0;m"
