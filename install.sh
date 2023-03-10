@@ -119,6 +119,14 @@ Process(){
       process_variable+=" &> /dev/null"
       # eval "${process_variable}" || exit
       ;;
+    --unzip)
+      process_variable=""
+      process_variable+="unzip"
+      process_variable+=" -d ${HOME}"
+      process_variable+=" ${process_args}"
+      process_variable+=" &> /dev/null"
+      # eval "${process_variable}" || exit
+      ;;
     --func)
       process_variable=""
       process_variable+="${process_args}"
@@ -136,7 +144,7 @@ Process(){
   echo "Initialising ${process_identity}"
   echo
   while [ $count -lt $total ]; do
-    eval ${process_variable}
+    eval ${process_variable} || exit
     count=$(( $count + 1 ))
     pd=$(( $count * 73 / $total ))
     printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
@@ -186,14 +194,13 @@ phase2(){
 
 phase1(){
   if [[ -f "${HOME}/.ui/p1.dl" ]]; then
-    echo
-    phase2
+    Process --func phase2 "Installing Phase 2"
   else
     echo
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip"
+    Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Installing TermUi"
     echo -e "\e[0;2m\e[3m"
     unzip -d ${HOME} TermUi.zip
     echo -e "\e[0;m"
