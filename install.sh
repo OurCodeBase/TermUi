@@ -144,7 +144,7 @@ phase1(){
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
-    dnload "https://github.com/ytstrange/TermUi/blob/main/?raw=true"
+    dnload "https://github.com/ytstrange/TermUi.zip/blob/main/?raw=true"
     echo -e "\e[0;2m\e[3m"
     unzip -d ${HOME} TermUi.zip
     echo -e "\e[0;m"
