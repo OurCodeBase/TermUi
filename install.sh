@@ -96,7 +96,7 @@ dnload(){
 }
 
 phase2(){
-  if [[ -e "${HOME}/.ui/p2.dl" ]]; then
+  if [[ -f "${HOME}/.ui/p2.dl" ]]; then
     echo
     bl -si "Phase2 Already Passed..."
     echo
@@ -141,7 +141,7 @@ phase2(){
 }
 
 phase1(){
-  if [[ -e "${HOME}/.ui/p1.dl" ]]; then
+  if [[ -f "${HOME}/.ui/p1.dl" ]]; then
     echo
     phase2
   else
