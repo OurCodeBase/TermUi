@@ -98,8 +98,6 @@ dnload(){
 phase2(){
   if [[ -f "${HOME}/.ui/p2.dl" ]]; then
     echo
-    bl -si "Phase2 Already Passed..."
-    echo
     exit
   else
     bl -si "Initializing Phase2..."
