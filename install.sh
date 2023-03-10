@@ -125,10 +125,10 @@ Process(){
       ;;
     --unzip)
       process_variable=""
-      process_variable+="unzip"
       process_variable+=" -d ~/"
       process_variable+=" ${process_args}"
       process_variable+=" &> /dev/null"
+      process_variable="unzip -d ${HOME}/ TermUi.zip &> /dev/null"
       # eval "${process_variable}" || exit
       ;;
     *)
