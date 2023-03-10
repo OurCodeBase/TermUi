@@ -97,91 +97,46 @@ dnload(){
 
 phase2(){
   if [[ -e "~/.ui/p2.dl" ]]; then
+    echo
     bl -si "Phase2 Already Passed..."
     echo
+    exit
   else
     bl -si "Initializing Phase2..."
     {
+      echo -e "\e[0;2m\e[3m"
       git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh" --depth 1
     } && {
       if [[ -e "~/.zshrc" ]]; then
         mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
       fi
+      cp "~/.oh-my-zsh/templates/zshrc.zsh-template" "~/.zshrc"
+      sed -i '/^ZSH_THEME/d' "~/.zshrc"
+      sed -i '1iZSH_THEME="agnoster"' "~/.zshrc"
+      echo "alias chcolor='~/.termux/colors.sh'" >> "~/.zshrc"
+      echo "alias chfont='~/.termux/fonts.sh'" >> "~/.zshrc"
+    } && {
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "~/.zsh-syntax-highlighting" --depth 1
+    } && {
+      echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "~/.zshrc"
+    } && {
+      chsh -s zsh
+    } && {
+      echo -e ""
+      chmod +x ~/.termux/colors.sh
+      chmod +x ~/.termux/fonts.sh
+      ~/.termux/colors.sh
+      ~/.termux/fonts.sh
+      echo
+      echo "1" >> "~/ui/p2.dl"
+      echo -e "\e[0;m"
+      echo -e "Please restart Termux app..."
+      echo
+      cd
+      rm -rf ../usr/etc/motd* &> /dev/null
+      exit
     }
   fi
-}
-
-phase3(){
-  if [[ -e "~/ui/p2.dl" ]]; then
-    #statements
-    echo -e "Phase2 Already Passed !"
-    echo ""
-  else
-    echo -e "Initializing...Phase2"
-    {
-      git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh" --depth 1
-    }&&{
-      if [[ -f "$HOME/.zshrc" ]]; then
-        #statements
-        mv "$HOME/.zshrc" "$HOME/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
-      fi
-      cp "$HOME/.oh-my-zsh/templates/zshrc.zsh-template" "$HOME/.zshrc"
-      sed -i '/^ZSH_THEME/d' "$HOME/.zshrc"
-      sed -i '1iZSH_THEME="agnoster"' "$HOME/.zshrc"
-      echo "alias chcolor='$HOME/.termux/colors.sh'" >> "$HOME/.zshrc"
-      echo "alias chfont='$HOME/.termux/fonts.sh'" >> "$HOME/.zshrc"
-      }&&{
-          git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
-      }&&{
-          echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
-      }&&{
-          chsh -s zsh
-      }&&{
-          echo -e ""
-          chmod +x $HOME/.termux/colors.sh
-          $HOME/.termux/colors.sh
-          echo -e "$enc"
-          chmod +x $HOME/.termux/fonts.sh
-          $HOME/.termux/fonts.sh
-        
-          echo "1" >> "~/ui/p2.dl"
-          echo ""
-          echo -e "Please restart Termux app..."
-          echo ""
-          cd
-          rm -rf ../usr/etc/motd* &> /dev/null
-          exit
-      }
-  fi
-}
-
-phase2(){
-  if [[ -f "~/.ui/p2.dl" ]]; then
-    echo
-  else
-    echo -e "\e[0;2m\e[3m"
-    git clone https://github.com/ohmyzsh/ohmyzsh.git "~/.oh-my-zsh" --depth 1
-    if [[ -f "~/.zshrc" ]]; then
-      mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
-    fi
-  fi
-  cp "~/.oh-my-zsh/templates/zshrc.zsh-template" "~/.zshrc"
-  sed -i '/^ZSH_THEME/d' "~/.zshrc"
-  sed -i '1iZSH_THEME="agnoster"' "~/.zshrc"
-  echo "alias chcolor='~/.termux/colors.sh'" >> "~/.zshrc"
-  echo "alias chfont='~/.termux/fonts.sh'" >> "~/.zshrc"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "~/.zsh-syntax-highlighting" --depth 1
-  echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "~/.zshrc"
-  chsh -s zsh
-  chmod +x ~/.termux/colors.sh
-  bash ~/.termux/colors.sh
-  chmod +x ~/.termux/fonts.sh
-  bash ~/.termux/fonts.sh
-  rm -rf ../usr/etc/motd* &> /dev/null
-  echo "1" > ~/.ui/p2.dl
-  echo -e "\e[0;m"
-  bl -s "Please restart your termux app."
-  exit
 }
 
 phase1(){
