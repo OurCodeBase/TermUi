@@ -95,8 +95,24 @@ dnload(){
   fi
 }
 
+phase2(){
+  if [[ -e "~/.ui/p2.dl" ]]; then
+    bl -si "Phase2 Already Passed..."
+    echo
+  else
+    bl -si "Initializing Phase2..."
+    {
+      git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh" --depth 1
+    } && {
+      if [[ -e "~/.zshrc" ]]; then
+        mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
+      fi
+    }
+  fi
+}
+
 phase3(){
-  if [[ -f "~/ui/p2.dl" ]]; then
+  if [[ -e "~/ui/p2.dl" ]]; then
     #statements
     echo -e "Phase2 Already Passed !"
     echo ""
@@ -128,7 +144,7 @@ phase3(){
           chmod +x $HOME/.termux/fonts.sh
           $HOME/.termux/fonts.sh
         
-          echo "1" > "~/ui/p2.dl"
+          echo "1" >> "~/ui/p2.dl"
           echo ""
           echo -e "Please restart Termux app..."
           echo ""
