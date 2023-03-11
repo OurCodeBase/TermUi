@@ -66,9 +66,9 @@ ping_ok(){
   if [[ "${?}" != 0 ]];then
     echo
 	  bl -ai "Please Check Your Internet Connection...";
-    return 0
+    return 0 # return true
   else
-    return 1
+    return 1 # return false
 	fi
 }
 
