@@ -59,6 +59,7 @@ bl(){
     enc="\e[0;m"
     echo -e "${var3}${2}${enc}"
   fi
+  return 1
 }
 
 ping_ok(){
