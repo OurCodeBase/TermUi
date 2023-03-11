@@ -73,25 +73,6 @@ ping_ok(){
 	fi
 }
 
-OpenZip(){
-  unzip -d ${HOME} TermUi.zip &> /dev/null
-}
-
-SpinnerOpenZip(){
-  OpenZip &
-  pid=$(pgrep -n OpenZip)
-  spin=('█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█')
-  echo -n "[Extracting] ${spin[0]}"
-  while [ kill -0 $pid ]
-  do
-    for i in "${spin[@]}"
-    do
-          echo -ne "\b$i"
-          sleep 0.1
-    done
-  done
-}
-
 # Process --install figlet "Install Figlet"
 
 Process(){
@@ -211,7 +192,7 @@ phase1(){
     fi
     Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi"
     echo -e "\e[0;2m\e[3m"
-    SpinnerOpenZip
+    unzip -d ${HOME} TermUi.zip &> /dev/null
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
