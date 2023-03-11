@@ -168,7 +168,6 @@ phase2(){
     echo
     exit
   else
-    bl -si "Initializing Phase2..."
     {
       echo -e "\e[0;2m\e[3m"
       Process --gitcl "https://github.com/ohmyzsh/ohmyzsh.git" "${HOME}/.oh-my-zsh" "Downloading OhMyZsh"
@@ -207,7 +206,6 @@ phase1(){
   if [[ -f "${HOME}/.ui/p1.dl" ]]; then
     phase2
   else
-    echo
     if [[ -d "${HOME}/.termux" ]]; then
       mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
     fi
