@@ -73,6 +73,20 @@ ping_ok(){
 	fi
 }
 
+Spinner(){
+  pid=$! # Process Id of the previous running command
+  spin=('█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█')
+  echo -n "[Loading] ${spin[0]}"
+  while [ kill -0 $pid ]
+  do
+    for i in "${spin[@]}"
+    do
+          echo -ne "\b$i"
+          sleep 0.1
+    done
+  done
+}
+
 # Process --install figlet "Install Figlet"
 
 Process(){
