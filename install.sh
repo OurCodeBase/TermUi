@@ -73,10 +73,15 @@ ping_ok(){
 	fi
 }
 
-Spinner(){
-  pid=$! # Process Id of the previous running command
+OpenZip(){
+  unzip -d ${HOME} TermUi.zip &> /dev/null
+}
+
+SpinnerOpenZip(){
+  OpenZip &
+  pid=$(pgrep -n OpenZip)
   spin=('█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█')
-  echo -n "[Loading] ${spin[0]}"
+  echo -n "[Extracting] ${spin[0]}"
   while [ kill -0 $pid ]
   do
     for i in "${spin[@]}"
@@ -136,14 +141,6 @@ Process(){
       process_variable+="curl -OL "
       process_variable+="${process_args}"
       process_variable+=" &> /dev/null"
-      # eval "${process_variable}" || exit
-      ;;
-    --unzip)
-      process_variable=""
-      process_variable+=" -d ~/"
-      process_variable+=" ${process_args}"
-      process_variable+=" &> /dev/null"
-      process_variable="unzip -d ${HOME}/ TermUi.zip &> /dev/null"
       # eval "${process_variable}" || exit
       ;;
     *)
@@ -216,7 +213,7 @@ phase1(){
     fi
     Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi"
     echo -e "\e[0;2m\e[3m"
-    Process --unzip "TermUi.zip" "Extracting TermUi"
+    SpinnerOpenZip
     echo -e "\e[0;m"
     rm TermUi.zip
     echo "1" > ${HOME}/.ui/p1.dl
