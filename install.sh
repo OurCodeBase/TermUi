@@ -146,11 +146,9 @@ Process(){
 
 phase2(){
   if [[ -f "${HOME}/.ui/p2.dl" ]]; then
-    echo
     exit
   else
     {
-      echo -e "\e[0;2m\e[3m"
       Process --gitcl "https://github.com/ohmyzsh/ohmyzsh.git" "${HOME}/.oh-my-zsh" "Downloading OhMyZsh"
       Process --gitcl "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}/.zsh-syntax-highlighting" "Downloading zsh-syntax-highlighting"
       echo
