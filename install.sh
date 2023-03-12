@@ -28,7 +28,7 @@ bl(){
         var3+="${italic}"
         ;;
       a)
-        alert="\e[0;31m\e[1m[!] "
+        alert="\e[0;31m\e[3m\e[1m[-] "
         var3="${alert}"
         ;;
       s)
@@ -62,15 +62,31 @@ bl(){
   return 1
 }
 
-ping_ok(){
+ping_off(){
   (ping -c 3 google.com) &> /dev/null 2>&1
   if [[ "${?}" != 0 ]];then
     echo
-	  bl -ai "Please Check Your Internet Connection...";
+	  bl -ai "Please Check Your Internet Connection...\e[0;m";
     return 0 # return true
   else
     return 1 # return false
 	fi
+}
+
+pkg_build(){
+  pkg_info=${1}
+  (ping -c 3 google.com) &> /dev/null 2>&1
+  if [[ "${?}" != 0 ]]; then
+    echo
+    bl -a "Internet Connection Error..."
+    echo
+    exit
+  fi
+  if [[ -z "${pkg_info}" ]]; then
+    echo
+    bl -a "Package Parameter is Empty..."
+    echo
+  fi
 }
 
 # Process --install figlet "Install Figlet"
@@ -86,7 +102,7 @@ Process(){
   elif [[ -z ${process_identity} ]]; then
     exit
   fi
-  if ping_ok; then
+  if ping_off; then
     exit
   fi
   # args variable for Process
