@@ -65,7 +65,7 @@ phase2(){
   else
     {
       dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";
-      dnrepo "zsh-users/zsh-syntax-highlighting" "${HOME}/.zsh-syntax-highlighting";echo;
+      dnrepo "zsh-users/zsh-syntax-highlighting" "${HOME}/.zsh-syntax-highlighting";
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
         mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
