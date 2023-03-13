@@ -26,7 +26,7 @@ Spin(){
 
 pkg_build(){
   pkg_info=${1};
-  if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package Parameter is Empty...";echo;return 1;fi
+  if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package parameter is Empty...";echo;return 1;fi
   (ping -c 3 google.com) &> /dev/null 2>&1;
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   _pkg_var2=$(eval "apt search ${pkg_info} 2> /dev/null");
