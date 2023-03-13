@@ -3,63 +3,19 @@
 bl(){
   while getopts 'rgbpfias:h' opt; do
     case "${opt}" in
-      r)
-        red="\e[0;31m"
-        var3="${red}"
-        ;;
-      g)
-        green="\e[0;32m"
-        var3="${green}"
-        ;;
-      b)
-        blue="\e[0;34m"
-        var3="${blue}"
-        ;;
-      p)
-        pearly="\e[0;2m"
-        var3="${blue}"
-        ;;
-      f)
-        fearless="\e[1m"
-        var3+="${fearless}"
-        ;;
-      i)
-        italic="\e[3m"
-        var3+="${italic}"
-        ;;
-      a)
-        alert="\e[0;31m\e[3m\e[1m[-] "
-        var3="${alert}"
-        ;;
-      s)
-        success="\e[0;32m\e[1m[+] "
-        var3="${success}"
-        ;;
-      ?)
-        enc="\e[0;m"
-        fearless="\e[1m"
-        echo -e "${fearless} Usage:${enc}
-  -r  red
-  -g  green
-  -b  blue
-  -p  pearly<Grey>
-  -f  fearless<Bold>
-  -i  italic
-  -a  alert
-  -s  success"
-        exit 1
-        ;;
+      r)var3="\e[0;31m";;g)var3="\e[0;32m";;
+      b)var3="\e[0;34m";;p)var3="\e[0;2m";;
+      f)var3+="\e[1m";;i)var3+="\e[3m";;
+      a)var3="\e[0;31m\e[3m\e[1m[∆] ";;
+      s)var3="\e[0;32m\e[3m\e[1m[√] ";;
+      ?|h)
+        echo -e "\e[1mUsage: \e[0;m";
+        echo -e " -r  red\n -g  green\n -b  blue\n -p  pearly<Grey>
+ -f  fearless<Bold>\n -i  italic\n -a  alert\n -s  success";return 1;;
     esac
   done
-  if [[ -z "${2}" ]]; then
-    enc="\e[0;m"
-    fearless="\e[1m"
-    echo -e "${fearless}Hello World ${enc}"
-  else
-    enc="\e[0;m"
-    echo -e "${var3}${2}${enc}"
-  fi
-  return 1
+  if [[ -z "${2}" ]]; then echo -e "\e[0;32m\e[3m\e[1m[√] Hello World\e[0;m";return 1;
+  else echo -e "${var3}${2}\e[0;m";return 0;fi
 }
 
 ping_off(){
