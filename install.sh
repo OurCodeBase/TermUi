@@ -6,8 +6,8 @@ bl(){
       r)var3="\e[0;31m";;g)var3="\e[0;32m";;
       b)var3="\e[0;34m";;p)var3="\e[0;2m";;
       f)var3+="\e[1m";;i)var3+="\e[3m";;
-      a)var3="\e[0;31m\e[3m\e[1m[∆] ";;
-      s)var3="\e[0;32m\e[3m\e[1m[√] ";;
+      a)var3="\e[0;31m\e[1m[∆] ";;
+      s)var3="\e[0;32m\e[1m[√] ";;
       ?|h)
         echo -e "\e[1mUsage: \e[0;m";
         echo -e " -r  red\n -g  green\n -b  blue\n -p  pearly<Grey>
