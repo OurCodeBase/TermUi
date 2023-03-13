@@ -64,9 +64,8 @@ phase2(){
   if [[ -f "${HOME}/.ui/p2.dl" ]]; then return 0;
   else
     {
-      dnrepo "ohmyzsh/ohmyzsh.git" "${HOME}/.oh-my-zsh" "Downloading OhMyZsh"
-      dnrepo "zsh-users/zsh-syntax-highlighting.git" "${HOME}/.zsh-syntax-highlighting" "Downloading zsh-syntax-highlighting"
-      echo
+      dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";
+      dnrepo "zsh-users/zsh-syntax-highlighting" "${HOME}/.zsh-syntax-highlighting";echo;
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
         mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
@@ -88,10 +87,10 @@ phase2(){
       ${HOME}/.termux/fonts.sh
       echo
       echo "1" >> "${HOME}/.ui/p2.dl"
-      bl -si "Please restart Termux app..."
+      bl -s "Please restart Termux app..."
       rm -rf ${HOME}/../usr/etc/motd* &> /dev/null
       echo
-      exit
+      return 0
     }
   fi
 }
