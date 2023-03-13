@@ -24,26 +24,18 @@ Spin(){
   for _snip in ${_spins[@]} ; do echo -ne "\r\e[0;32mLoading...[${_snip}]\e[0;m ";sleep 0.2;done;done;echo;return;
 }
 
-ping_off(){
-  (ping -c 3 google.com) &> /dev/null 2>&1
-  if [[ "${?}" != 0 ]];then
-    echo
-	  bl -ai "Please Check Your Internet Connection...";
-    return 0 # return true
-  else
-    return 1 # return false
-	fi
-}
-
 pkg_build(){
-  pkg_info=${1}
-  _pkg_not_found="Sorting... Done
-Full Text Search... Done"
+  pkg_info=${1};
+  if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package Parameter is Empty...";echo;return 1;fi
   (ping -c 3 google.com) &> /dev/null 2>&1;
-  if [[ "${?}" != 0 ]]; then echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Internet Connection Error...\e[0;m";echo;return 1;
-  elif [[ -z "${pkg_info}" ]]; then echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package Parameter is Empty...\e[0;m";echo;return 1;
-  elif [[ "$(eval "apt search ${pkg_info}")"=="${_pkg_not_found}" ]]; then echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package does not Exist...\e[0;m";echo;return 1;
-  fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
+  _pkg_var2=$(eval "apt search ${pkg_info} 2> /dev/null");
+  if [[ "${_pkg_var2}" != *"stable"* ]]; then echo;bl -a "Package does not Exist...";echo;return 1;fi
+  count=0;total=34;pstr="[======================================]";echo;bl -s "Installing ${pkg_info}...";echo -e "\e[0;32m";
+  while [ $count -lt $total ]; do
+    eval "apt-get install ${pkg_info} -y &> /dev/null || sudo apt-get install ${pkg_info} -y &> /dev/null";
+    count=$(( $count + 1 ));pd=$(( $count * 73 / $total ));
+    printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr;done;echo -e "\e[0;m";echo;return 0;
 }
 
 # Process --install figlet "Install Figlet"
@@ -172,8 +164,8 @@ phase1(){
 }
 
 depends(){
-  Process --install git "Installing Git"
-  Process --install zsh "Installing Zsh"
+  pkg_build git
+  pkg_build zsh
   phase1
 }
 
@@ -186,14 +178,9 @@ config_files(){
 }
 
 setup_storage(){
-  clear
-  echo
-  if [[ -d "${HOME}/storage/shared" ]]; then
-    bl -si "Storage permission is already allowed..."
-  else
-    bl -si "Please allow storage permission..."
-    eval "termux-setup-storage"
-  fi
+  clear;echo;
+  if [[ ! -d "${HOME}/storage/shared" ]]; then bl -a "Storage Permission is already Allowed...";
+  else bl -s "Please Allow Storage Permission...";eval "termux-setup-storage";fi
   config_files
 }
 
