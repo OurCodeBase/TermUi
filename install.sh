@@ -18,6 +18,12 @@ bl(){
   else echo -e "${var3}${2}\e[0;m";return 0;fi
 }
 
+Spin(){
+  echo;_PID=${!};i=1;_spins=('█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█');echo -n ' ';
+  while [ -d /proc/${_PID} ];do
+  for _snip in ${_spins[@]} ; do echo -ne "\r\e[0;32mLoading...[${_snip}]\e[0;m ";sleep 0.2;done;done;echo;return;
+}
+
 ping_off(){
   (ping -c 3 google.com) &> /dev/null 2>&1
   if [[ "${?}" != 0 ]];then
@@ -34,12 +40,9 @@ pkg_build(){
   _pkg_not_found="Sorting... Done
 Full Text Search... Done"
   (ping -c 3 google.com) &> /dev/null 2>&1;
-  if [[ "${?}" != 0 ]]; then
-    echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Internet Connection Error...\e[0;m";echo;exit;
-  elif [[ -z "${pkg_info}" ]]; then
-    echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package Parameter is Empty...\e[0;m";echo;exit;
-  elif [[ "$(eval "apt search ${pkg_info}")"=="${_pkg_not_found}" ]]; then
-    echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package does not Exist...\e[0;m";echo;exit;
+  if [[ "${?}" != 0 ]]; then echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Internet Connection Error...\e[0;m";echo;return 1;
+  elif [[ -z "${pkg_info}" ]]; then echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package Parameter is Empty...\e[0;m";echo;return 1;
+  elif [[ "$(eval "apt search ${pkg_info}")"=="${_pkg_not_found}" ]]; then echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package does not Exist...\e[0;m";echo;return 1;
   fi
 }
 
