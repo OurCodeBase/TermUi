@@ -21,7 +21,7 @@ bl(){
 Spin(){
   echo;_PID=${!};i=1;_spins=('█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█');echo -n ' ';
   while [ -d /proc/${_PID} ];do
-  for _snip in ${_spins[@]} ; do echo -ne "\r\e[0;32mLoading...[${_snip}]\e[0;m ";sleep 0.2;done;done;echo;echo;return;
+  for _snip in ${_spins[@]} ; do echo -ne "\r\e[0;2mLoading...[${_snip}]\e[0;m ";sleep 0.2;done;done;echo;echo;return;
 }
 
 pkg_build(){
@@ -31,7 +31,7 @@ pkg_build(){
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   _pkg_var2=$(eval "apt search ${pkg_info} 2> /dev/null");
   if [[ "${_pkg_var2}" != *"stable"* ]]; then echo;bl -a "Package does not Exist...";echo;return 1;fi
-  count=0;total=34;pstr="[======================================]";echo;bl -s "Installing ${pkg_info}...";echo -e "\e[0;32m";
+  count=0;total=34;pstr="[======================================]";echo;bl -s "Installing ${pkg_info}...";echo -e "\e[0;2m";
   while [ $count -lt $total ]; do
     eval "apt-get install ${pkg_info} -y &> /dev/null || sudo apt-get install ${pkg_info} -y &> /dev/null";
     count=$(( $count + 1 ));pd=$(( $count * 73 / $total ));
@@ -54,7 +54,7 @@ dnrepo(){
   (ping -c 3 google.com) &> /dev/null 2>&1;
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   prova+="${_repo_link}.git ${_file_link} --depth 1 &> /dev/null";
-  count=0;total=34;pstr="[======================================]";echo;bl -s "Cloning ${_repo_link}...";echo -e "\e[0;32m";
+  count=0;total=34;pstr="[======================================]";echo;bl -s "Cloning ${_repo_link}...";echo -e "\e[0;2m";
   while [ $count -lt $total ]; do
     eval "${prova}";count=$(( $count + 1 ));pd=$(( $count * 73 / $total ));
     printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr;done;echo -e "\e[0;m";echo;return 0;
