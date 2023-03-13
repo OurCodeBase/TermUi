@@ -21,7 +21,7 @@ bl(){
 Spin(){
   echo;_PID=${!};i=1;_spins=('█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█');echo -n ' ';
   while [ -d /proc/${_PID} ];do
-  for _snip in ${_spins[@]} ; do echo -ne "\r\e[0;32mLoading...[${_snip}]\e[0;m ";sleep 0.2;done;done;echo;return;
+  for _snip in ${_spins[@]} ; do echo -ne "\r\e[0;32mLoading...[${_snip}]\e[0;m ";sleep 0.2;done;done;echo;echo;return;
 }
 
 pkg_build(){
@@ -36,6 +36,15 @@ pkg_build(){
     eval "apt-get install ${pkg_info} -y &> /dev/null || sudo apt-get install ${pkg_info} -y &> /dev/null";
     count=$(( $count + 1 ));pd=$(( $count * 73 / $total ));
     printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr;done;echo -e "\e[0;m";echo;return 0;
+}
+
+dnload(){
+  _file_link=${1};prova="curl -OL "; # prova = process variable
+  if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
+  (ping -c 3 google.com) &> /dev/null 2>&1;
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
+  prova+="${_file_link} &> /dev/null";echo;bl -s "Downloading File...";
+  (eval "${prova}" & Spin) || (echo;bl -a "Unknown Error..."echo;return 1;)
 }
 
 # Process --install figlet "Install Figlet"
