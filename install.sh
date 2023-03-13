@@ -66,7 +66,7 @@ ping_off(){
   (ping -c 3 google.com) &> /dev/null 2>&1
   if [[ "${?}" != 0 ]];then
     echo
-	  bl -ai "Please Check Your Internet Connection...\e[0;m";
+	  bl -ai "Please Check Your Internet Connection...";
     return 0 # return true
   else
     return 1 # return false
@@ -75,17 +75,15 @@ ping_off(){
 
 pkg_build(){
   pkg_info=${1}
-  (ping -c 3 google.com) &> /dev/null 2>&1
+  _pkg_not_found="Sorting... Done
+Full Text Search... Done"
+  (ping -c 3 google.com) &> /dev/null 2>&1;
   if [[ "${?}" != 0 ]]; then
-    echo
-    bl -a "Internet Connection Error..."
-    echo
-    exit
-  fi
-  if [[ -z "${pkg_info}" ]]; then
-    echo
-    bl -a "Package Parameter is Empty..."
-    echo
+    echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Internet Connection Error...\e[0;m";echo;exit;
+  elif [[ -z "${pkg_info}" ]]; then
+    echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package Parameter is Empty...\e[0;m";echo;exit;
+  elif [[ "$(eval "apt search ${pkg_info}")"=="${_pkg_not_found}" ]]; then
+    echo;echo -e "\e[0;31m\e[3m\e[1m[∆] Package does not Exist...\e[0;m";echo;exit;
   fi
 }
 
