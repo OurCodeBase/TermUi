@@ -106,8 +106,7 @@ phase1(){
 
 starts(){
   clear;echo;
-  if [[ ! -d "${HOME}/storage/shared" ]]; then bl -s "Storage Permission is already Allowed...";
-  else bl -a "Please Allow Storage Permission...";eval "termux-setup-storage";fi
+  if [[ -d "${HOME}/storage/shared" ]]; then bl -s "Please Allow Storage Permission...";eval "termux-setup-storage";fi
   mkdir -p "${HOME}/.ui";pkg_build git;pkg_build zsh;phase1;return 0;
 }
 
