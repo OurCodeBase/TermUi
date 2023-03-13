@@ -47,63 +47,25 @@ dnload(){
   (eval "${prova}" & Spin) || (echo;bl -a "Unknown Error..."echo;return 1;)
 }
 
-# Process --install figlet "Install Figlet"
-
-Process(){
-  process_func=${1} # install,git clone,dnload
-  process_args=${2} # args for install,git clone,dnload
-  process_identity=${3} # args for name
-  if [[ -z "${process_func}" ]]; then
-    exit
-  elif [[ -z ${process_args} ]]; then
-    exit
-  elif [[ -z ${process_identity} ]]; then
-    exit
-  fi
-  if ping_off; then
-    exit
-  fi
-  # args variable for Process
-  # process_variable=""
-  case ${process_func} in
-    --gitcl)
-      process_variable=""
-      process_variable+="git clone"
-      process_variable+=" ${process_args}"
-      gitcl_file="${process_identity}"
-      process_identity="${4}"
-      process_variable+=" ${gitcl_file}"
-      process_variable+=" --depth 1"
-      process_variable+=" &> /dev/null"
-      # eval "${process_variable}" ||
-      ;;
-    *)
-      exit
-      ;;
-  esac
-  count=0
-  total=34
-  pstr="[======================================]"
-  echo
-  bl -si "${process_identity}"
-  echo
+dnrepo(){
+  _repo_link=${1};_file_link="${2}";prova="git clone https://github.com/"; # prova = process variable
+  if [[ -z "${_repo_link}" ]]; then echo;bl -a "Repository parameter is Empty...";echo;return 1;fi
+  if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
+  (ping -c 3 google.com) &> /dev/null 2>&1;
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
+  prova+="${_repo_link}.git ${_file_link} --depth 1 &> /dev/null";
+  count=0;total=34;pstr="[======================================]";echo;bl -s "Cloning ${_repo_link}...";echo -e "\e[0;32m";
   while [ $count -lt $total ]; do
-    eval ${process_variable}
-    count=$(( $count + 1 ))
-    pd=$(( $count * 73 / $total ))
-    printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
-  done
-  echo
-  return 1
+    eval "${prova}";count=$(( $count + 1 ));pd=$(( $count * 73 / $total ));
+    printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr;done;echo -e "\e[0;m";echo;return 0;
 }
 
 phase2(){
-  if [[ -f "${HOME}/.ui/p2.dl" ]]; then
-    exit
+  if [[ -f "${HOME}/.ui/p2.dl" ]]; then return 0;
   else
     {
-      Process --gitcl "https://github.com/ohmyzsh/ohmyzsh.git" "${HOME}/.oh-my-zsh" "Downloading OhMyZsh"
-      Process --gitcl "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}/.zsh-syntax-highlighting" "Downloading zsh-syntax-highlighting"
+      dnrepo "ohmyzsh/ohmyzsh.git" "${HOME}/.oh-my-zsh" "Downloading OhMyZsh"
+      dnrepo "zsh-users/zsh-syntax-highlighting.git" "${HOME}/.zsh-syntax-highlighting" "Downloading zsh-syntax-highlighting"
       echo
     } && {
       if [[ -e "${HOME}/.zshrc" ]]; then
@@ -139,8 +101,8 @@ phase1(){
   else
     if [[ -d "${HOME}/.termux" ]]; then mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
     dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
-    echo;(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin
-    echo;rm TermUi.zip;echo "1" > ${HOME}/.ui/p1.dl;phase2;return 0;fi
+    (unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin
+    rm TermUi.zip;echo "1" > ${HOME}/.ui/p1.dl;phase2;return 0;fi
 }
 
 starts(){
