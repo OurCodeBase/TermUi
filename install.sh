@@ -57,20 +57,6 @@ Process(){
   # args variable for Process
   # process_variable=""
   case ${process_func} in
-    --install)
-      process_variable=""
-      _build_pkg_var1=$(pwd)
-      _build_pkg_var2="com.termux"
-      if [[ ${_build_pkg_var1==*"${_build_pkg_var2}"*} ]]; then
-        process_variable+="apt-get install "
-      else
-        process_variable+="sudo apt-get install "
-      fi
-      process_variable+="${process_args}"
-      process_variable+=" -y &> /dev/null"
-      # process_variable has apt
-      # eval "${process_variable}" || exit
-      ;;
     --gitcl)
       process_variable=""
       process_variable+="git clone"
@@ -147,41 +133,21 @@ phase2(){
 }
 
 phase1(){
-  if [[ -f "${HOME}/.ui/p1.dl" ]]; then
-    phase2
+  if [[ -f "${HOME}/.ui/p1.dl" ]]; then phase2;
   else
-    if [[ -d "${HOME}/.termux" ]]; then
-      mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
-    fi
+    if [[ -d "${HOME}/.termux" ]]; then mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
     Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi"
-    echo -e "\e[0;2m\e[3m"
-    unzip -d ${HOME} TermUi.zip &> /dev/null
-    echo -e "\e[0;m"
-    rm TermUi.zip
+    echo;(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin;echo;rm TermUi.zip;
     echo "1" > ${HOME}/.ui/p1.dl
     phase2
   fi
 }
 
-depends(){
-  pkg_build git
-  pkg_build zsh
-  phase1
-}
-
-config_files(){
-  if [[ -d "${HOME}/.ui" ]]; then
-    depends
-  else
-    mkdir ${HOME}/.ui && depends
-  fi
-}
-
-setup_storage(){
+starts(){
   clear;echo;
-  if [[ ! -d "${HOME}/storage/shared" ]]; then bl -a "Storage Permission is already Allowed...";
-  else bl -s "Please Allow Storage Permission...";eval "termux-setup-storage";fi
-  config_files
+  if [[ ! -d "${HOME}/storage/shared" ]]; then bl -s "Storage Permission is already Allowed...";
+  else bl -a "Please Allow Storage Permission...";eval "termux-setup-storage";fi
+  mkdir -p "${HOME}/.ui";pkg_build git;pkg_build zsh;phase1;return 0;
 }
 
-setup_storage
+starts
