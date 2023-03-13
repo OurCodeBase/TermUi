@@ -96,11 +96,11 @@ phase2(){
 }
 
 phase1(){
-  if [[ -f "${HOME}/.ui/p1.dl" ]]; then phase2;
+  if [[ -f "${HOME}/.ui/p1.dl" ]]; then phase2;return 0;
   else
     if [[ -d "${HOME}/.termux" ]]; then mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
     dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
-    bl -s "Unpacking Files";(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin
+    bl -s "Unpacking Files...";(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin
     rm TermUi.zip;echo "1" > ${HOME}/.ui/p1.dl;phase2;return 0;fi
 }
 
