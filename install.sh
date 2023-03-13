@@ -136,11 +136,9 @@ phase1(){
   if [[ -f "${HOME}/.ui/p1.dl" ]]; then phase2;
   else
     if [[ -d "${HOME}/.termux" ]]; then mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
-    Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi"
+    Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi";
     echo;(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin;echo;rm TermUi.zip;
-    echo "1" > ${HOME}/.ui/p1.dl
-    phase2
-  fi
+    echo "1" > ${HOME}/.ui/p1.dl;phase2;return 0;fi
 }
 
 starts(){
