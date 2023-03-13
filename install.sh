@@ -40,7 +40,7 @@ pkg_build(){
 
 dnload(){
   _file_link=${1};prova="curl -OL "; # prova = process variable
-  if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
+  if [[ -z "${_file_link}" ]]; then echo;bl -a "Link parameter is Empty...";echo;return 1;fi
   (ping -c 3 google.com) &> /dev/null 2>&1;
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   prova+="${_file_link} &> /dev/null";echo;bl -s "Downloading File...";
@@ -76,13 +76,6 @@ Process(){
       process_variable+=" --depth 1"
       process_variable+=" &> /dev/null"
       # eval "${process_variable}" ||
-      ;;
-    --dnload)
-      process_variable=""
-      process_variable+="curl -OL "
-      process_variable+="${process_args}"
-      process_variable+=" &> /dev/null"
-      # eval "${process_variable}" || exit
       ;;
     *)
       exit
@@ -145,9 +138,9 @@ phase1(){
   if [[ -f "${HOME}/.ui/p1.dl" ]]; then phase2;
   else
     if [[ -d "${HOME}/.termux" ]]; then mv "${HOME}/.termux" "${HOME}/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
-    Process --dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip" "Downloading TermUi";
-    echo;(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin;echo;rm TermUi.zip;
-    echo "1" > ${HOME}/.ui/p1.dl;phase2;return 0;fi
+    dnload "https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
+    echo;(unzip -d ${HOME} TermUi.zip &> /dev/null) & Spin
+    echo;rm TermUi.zip;echo "1" > ${HOME}/.ui/p1.dl;phase2;return 0;fi
 }
 
 starts(){
