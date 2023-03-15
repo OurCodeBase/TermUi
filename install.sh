@@ -27,7 +27,7 @@ pkg_build(){
   pkg_info=${1};
   if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package parameter is Empty...";echo;return 1;fi
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
-  (apt-get install "${pkg_info}" -y || sudo apt-get install "${pkg_info}" -y);
+  {apt-get install "${pkg_info}" -y || sudo apt-get install "${pkg_info}" -y}
   if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
   echo -e "${enc}";return 0;
 }
