@@ -29,7 +29,7 @@ pkg_build(){
   (ping -c 3 google.com) &> /dev/null 2>&1;
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;exit;fi
   _pkg_var2=$(eval "apt search ${pkg_info} 2> /dev/null");
-  if [[ "${_pkg_var2}" != *"stable"* ]]; then echo;bl -a "Package does not Exist...";echo;return 1;fi
+  if [ "${_pkg_var2}" != *"stable"* ] || [ "${_pkg_var2}" != *"rolling"* ]; then echo;bl -a "Package does not Exist...";echo;return 1;fi
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
   (eval "apt-get install ${pkg_info} -y" || eval "sudo apt-get install ${pkg_info} -y");echo -e "${enc}";return 0;
 }
