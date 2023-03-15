@@ -108,7 +108,7 @@ install_color(){
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties";echo;
+    cp -fi "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties";echo;
     bl -s "Please restart your Userland session...";echo;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
