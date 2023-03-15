@@ -65,6 +65,8 @@ lisence_exist(){
   if [[ $(cat ${lisence}) == *"Author:Harsh B"* ]]; then return 0;else return 1;fi
 }
 
+# Userland needs iputils-ping package
+
 TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
   (ping -c 3 google.com) &> /dev/null 2>&1;
