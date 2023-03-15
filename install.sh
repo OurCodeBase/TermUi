@@ -66,7 +66,7 @@ lisence_exist(){
 
 TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
-  prova="curl -OL https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
+  prova="wget https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
   echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
   if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
   echo -e "${enc}";
