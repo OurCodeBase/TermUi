@@ -23,11 +23,17 @@ bl(){
   else echo -e "${var3}${2}\e[0;m";return 0;fi
 }
 
+is_userland(){
+  (cd /host-rootfs/data/data/tech.ula/files/home) &> /dev/null 2>&1;
+  if [[ "${?}" != 0 ]]; then return 1;else return 0;fi
+}
+
 pkg_build(){
   pkg_info=${1};
   if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package parameter is Empty...";echo;return 1;fi
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
-  apt-get install "${pkg_info}" -y || sudo apt-get install "${pkg_info}" -y
+  if is_userland; then sudo apt-get install "${pkg_info}" -y;
+  else apt-get install "${pkg_info}" -y;fi
   if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;return 1;fi
   echo -e "${enc}";return 0;
 }
@@ -50,11 +56,6 @@ banner(){
   ";
   echo "Start coding with yourself.";
   echo "---------------------------";
-}
-
-is_userland(){
-  (cd /host-rootfs/data/data/tech.ula/files/home) &> /dev/null 2>&1;
-  if [[ "${?}" != 0 ]]; then return 1;else return 0;fi
 }
 
 lisence_exist(){
