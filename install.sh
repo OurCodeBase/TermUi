@@ -136,7 +136,7 @@ install_font(){
 
 starter(){
   cd;banner;let i=0;echo;
-  funcs_array=("Font" "Colour" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh");
+  funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh");
   for funcs in ${funcs_array[@]} ; do echo "[$((i++))] Install ${funcs}";done;
   echo;read -p ">> " choice;
   case ${choice} in
