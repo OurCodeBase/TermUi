@@ -28,7 +28,7 @@ pkg_build(){
   if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package parameter is Empty...";echo;return 1;fi
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
   apt-get install "${pkg_info}" -y || sudo apt-get install "${pkg_info}" -y
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;return 1;fi
   echo -e "${enc}";return 0;
 }
 
@@ -38,7 +38,7 @@ dnrepo(){
   if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
   prova+="${_repo_link}.git ${_file_link} --depth 1";
   echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";eval "${prova}";
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;return 1;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Repository Download Failed...";echo;return 1;fi
   echo -e "${enc}";return 0;
 }
 
@@ -68,11 +68,11 @@ TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
   prova="curl -OL https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
   echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;return 1;fi
   echo -e "${enc}";
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Unknown Error...";echo;return 1;fi
-  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};starter;return 0;
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;return 1;fi
+  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;starter;
 }
 
 install_ohmyzsh(){
@@ -87,7 +87,6 @@ install_ohmyzsh(){
 
 install_zsh(){
   pkg_build zsh;
-  if [[ ${?} != 0 ]]; then return 1;fi
   if is_userland; then
     echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
     bl -s "Please restart your Userland session...";echo;
@@ -115,7 +114,7 @@ install_color(){
 }
 
 install_font(){
-  if ! lisence_exist; then TermDir_Download;starter;fi
+  if ! lisence_exist; then TermDir_Download;fi
   echo;font_array=();cd "${TermDir}/fonts";let i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
