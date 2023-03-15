@@ -128,12 +128,11 @@ install_font(){
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;echo;
-    bl -s "Please restart your Userland session..."echo;
+    (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
+    echo;bl -s "Please restart your Userland session...";echo;return 0;
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
-    eval "termux-reload-settings";
-    echo;bl -s "Please restart your Termux session...";echo;return 0;
+    eval "termux-reload-settings";echo;bl -s "Please restart your Termux session...";echo;return 0;
   fi
 }
 
