@@ -89,6 +89,7 @@ install_ohmyzsh(){
 
 install_zsh(){
   pkg_build zsh;
+  if [[ ${?} != 1 ]]; then return 1;fi
   if is_userland; then
     echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
     bl -s "Please restart your Userland session...";echo;
