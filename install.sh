@@ -101,7 +101,7 @@ install_color(){
   echo;color_array=();cd "${TermDir}/colors";let i=0;
   for file_c in *.properties ; do color_array=(${color_array[@]} "${file_c}");done;cd;
   for obj_c in ${color_array[@]} ; do
-  obj_c=${obj_c/".properties"/};echo "[$((i++))] ${obj}";done;
+  obj_c=${obj_c/".properties"/};echo "[$((i++))] ${obj_c}";done;
   echo;read -p ">> " choice_c;
   if [[ "${choice_c}" -ge "${#color_array[@]}" ]]; then
   echo;bl -a "Invalid Input...";echo;return 1;fi
