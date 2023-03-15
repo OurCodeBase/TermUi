@@ -107,10 +107,10 @@ install_color(){
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
+    (yes | cp -f "${TermDir}/colors/${color_array[${choice_c}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
     return 0;
   else
-    yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
+    yes | cp "${TermDir}/colors/${color_array[${choice_c}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";return 0;
   fi
 }
