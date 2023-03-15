@@ -73,7 +73,7 @@ TermDir_Download(){
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   prova="curl -OL https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
   echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");echo -e "${enc}";
-  bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
+  bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);echo -e "${enc}"
   rm TermUi.zip;echo "TermDir:True" >> ${lisence};starter;return 0;
 }
 
