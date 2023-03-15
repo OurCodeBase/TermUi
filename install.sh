@@ -26,11 +26,9 @@ bl(){
 pkg_build(){
   pkg_info=${1};
   if [[ -z "${pkg_info}" ]]; then echo;bl -a "Package parameter is Empty...";echo;return 1;fi
-  (ping -c 3 google.com) &> /dev/null 2>&1;
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;exit;fi
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
   (apt-get install "${pkg_info}" -y || sudo apt-get install "${pkg_info}" -y);
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Unknown Error...";echo;exit;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
   echo -e "${enc}";return 0;
 }
 
@@ -38,11 +36,10 @@ dnrepo(){
   _repo_link=${1};_file_link="${2}";prova="git clone https://github.com/"; # prova = process variable
   if [[ -z "${_repo_link}" ]]; then echo;bl -a "Repository parameter is Empty...";echo;return 1;fi
   if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
-  (ping -c 3 google.com) &> /dev/null 2>&1;
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   prova+="${_repo_link}.git ${_file_link} --depth 1";
-  echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";
-  eval "${prova}";echo -e "${enc}";return 0;
+  echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";eval "${prova}";
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
+  echo -e "${enc}";return 0;
 }
 
 banner(){
@@ -52,7 +49,7 @@ banner(){
 ╚═╝ ╩ ╩╚═╩ ╩╝╚╝╚═╝╚═╝
   ";
   echo "Start coding with yourself.";
-  echo "___________________________";
+  echo "---------------------------";
 }
 
 is_userland(){
@@ -69,10 +66,10 @@ lisence_exist(){
 
 TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
-  (ping -c 3 google.com) &> /dev/null 2>&1;
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;return 1;fi
   prova="curl -OL https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
-  echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");echo -e "${enc}";
+  echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
+  echo -e "${enc}";
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unknown Error...";echo;return 1;fi
   echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};starter;return 0;
