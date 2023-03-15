@@ -72,7 +72,7 @@ TermDir_Download(){
   prova="curl -OL https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
   echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");echo -e "${enc}";
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
-  rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
+  rm TermUi.zip;echo "TermDir:True" >> ${lisence};starter;return 0;
 }
 
 install_ohmyzsh(){
@@ -96,7 +96,7 @@ install_zsh(){
 }
 
 install_color(){
-  if ! lisence_exist; then TermDir_Download;starter;return 1;fi
+  if ! lisence_exist; then TermDir_Download;return 1;fi
   echo;color_array=();cd "${TermDir}/colors";let i=0;
   for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
   for obj in ${color_array[@]} ; do
