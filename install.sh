@@ -72,7 +72,7 @@ TermDir_Download(){
   echo -e "${enc}";
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;return 1;fi
-  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};starter;
+  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
 install_ohmyzsh(){
@@ -99,11 +99,11 @@ install_zsh(){
 install_color(){
   if ! lisence_exist; then TermDir_Download;return 1;fi
   echo;color_array=();cd "${TermDir}/colors";let i=0;
-  for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
-  for obj in ${color_array[@]} ; do
-  obj=${obj/".properties"/};echo "[$((i++))] ${obj}";done;
-  echo;read -p ">> " choice;
-  if [[ "${choice}" -ge "${#color_array[@]}" ]]; then
+  for file_c in *.properties ; do color_array=(${color_array[@]} "${file_c}");done;cd;
+  for obj_c in ${color_array[@]} ; do
+  obj_c=${obj_c/".properties"/};echo "[$((i++))] ${obj}";done;
+  echo;read -p ">> " choice_c;
+  if [[ "${choice_c}" -ge "${#color_array[@]}" ]]; then
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
