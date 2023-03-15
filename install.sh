@@ -72,7 +72,7 @@ TermDir_Download(){
   echo -e "${enc}";
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;return 1;fi
-  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;starter;
+  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};starter;
 }
 
 install_ohmyzsh(){
@@ -83,15 +83,16 @@ install_ohmyzsh(){
   cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
   sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";
   sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc";
+  return 0;
 }
 
 install_zsh(){
   pkg_build zsh;
   if is_userland; then
     echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
-    bl -s "Please restart your Userland session...";echo;
+    bl -s "Please restart your Userland session...";echo;return 0;
   else chsh -s zsh;
-    bl -s "Please restart your Termux session...";echo;
+    bl -s "Please restart your Termux session...";echo;return 0;
   fi
 }
 
@@ -107,6 +108,7 @@ install_color(){
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
+    return 0;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";return 0;
