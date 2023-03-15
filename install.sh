@@ -29,7 +29,7 @@ pkg_build(){
   (ping -c 3 google.com) &> /dev/null 2>&1;
   if [[ "${?}" != 0 ]]; then echo;bl -a "Internet Connection Error...";echo;exit;fi
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
-  (eval "apt-get install ${pkg_info} -y" || eval "sudo apt-get install ${pkg_info} -y");
+  (apt-get install "${pkg_info}" -y || sudo apt-get install "${pkg_info}" -y);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unknown Error...";echo;exit;fi
   echo -e "${enc}";return 0;
 }
