@@ -108,7 +108,7 @@ install_color(){
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    yes 2>/dev/null | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties";echo;
+    yes 2> /dev/null | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties";echo;
     bl -s "Please restart your Userland session...";echo;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
@@ -128,7 +128,7 @@ install_font(){
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    yes 2>/dev/null | cp "${font_array[${choice}]}" "${hostdir}/.termux/font.ttf";echo;
+    yes 2> /dev/null | cp "${font_array[${choice}]}" "${hostdir}/.termux/font.ttf";echo;
     bl -s "Please restart your Userland session..."echo;
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
