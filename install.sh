@@ -38,7 +38,7 @@ dnrepo(){
   if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
   prova+="${_repo_link}.git ${_file_link} --depth 1";
   echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";eval "${prova}";
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Something Went Wrong...";echo;return 1;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;return 1;fi
   echo -e "${enc}";return 0;
 }
 
