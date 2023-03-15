@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Variables
 red="\e[0;31m";green="\e[0;32m";blue="\e[0;34m";TermDir="${HOME}/.termux";
@@ -108,16 +108,14 @@ install_color(){
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
-    echo;bl -s "Please restart your Userland session...";echo;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
-    eval "termux-reload-settings";
-    echo;bl -s "Please restart your Termux session...";echo;return 0;
+    eval "termux-reload-settings";return 0;
   fi
 }
 
 install_font(){
-  if ! lisence_exist; then TermDir_Download;starter;return 1;fi
+  if ! lisence_exist; then TermDir_Download;starter;fi
   echo;font_array=();cd "${TermDir}/fonts";let i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
@@ -128,10 +126,10 @@ install_font(){
   if is_userland; then
     hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
-    echo;bl -s "Please restart your Userland session...";echo;return 0;
+    return 0;
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
-    eval "termux-reload-settings";echo;bl -s "Please restart your Termux session...";echo;return 0;
+    eval "termux-reload-settings";return 0;
   fi
 }
 
