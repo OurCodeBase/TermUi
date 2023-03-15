@@ -98,7 +98,7 @@ install_zsh(){
 }
 
 install_color(){
-  if ! lisence_exist; then TermDir_Download;return 1;fi
+  if ! lisence_exist; then TermDir_Download;starter;fi
   echo;color_array=();cd "${TermDir}/colors";let i=0;
   for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
   for obj in ${color_array[@]} ; do
@@ -117,7 +117,7 @@ install_color(){
 }
 
 install_font(){
-  if ! lisence_exist; then TermDir_Download;fi
+  if ! lisence_exist; then TermDir_Download;starter;fi
   echo;font_array=();cd "${TermDir}/fonts";let i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
