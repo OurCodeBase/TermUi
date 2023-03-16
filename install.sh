@@ -88,16 +88,16 @@ install_ohmyzsh(){
 install_zsh(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
-    echo;bl -s "Zsh is already installed...";echo;return 0;
+    echo;bl -s "Zsh is already installed...";echo;exit;
   else
     pkg_build zsh;
     if is_userland; then
       echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
       if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-      echo;bl -s "Please restart your Userland session...";echo;return 0;
+      echo;bl -s "Please restart your Userland session...";echo;exit;
     else chsh -s zsh;
       if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-      echo;bl -s "Please restart your Termux session...";echo;return 0;
+      echo;bl -s "Please restart your Termux session...";echo;exit;
     fi
   fi
   
