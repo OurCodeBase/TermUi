@@ -53,8 +53,7 @@ banner(){
 ╚═╗ ║ ╠╦╝╠═╣║║║║ ╦║╣ 
 ╚═╝ ╩ ╩╚═╩ ╩╝╚╝╚═╝╚═╝
   ";
-  echo "Start coding with yourself.";
-  echo "---------------------------";
+  echo "Start coding with yourself.";echo "---------------------------";
 }
 
 lisence_exist(){
@@ -65,7 +64,7 @@ lisence_exist(){
 TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
   local prova="wget https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
-  echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";
+  bl -s "Downloading File...";echo -e "${pearly}${pearly}";
   if [[ ! -f "TermUi.zip" ]]; then
     (eval "${prova}");if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
   fi
@@ -104,7 +103,7 @@ install_zsh(){
 }
 
 install_color(){
-  if ! lisence_exist; then TermDir_Download;starter;fi
+  if ! lisence_exist; then echo;TermDir_Download;starter;fi
   echo;local color_array=();cd "${TermDir}/colors";local i=0;
   for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
   for obj in ${color_array[@]} ; do
@@ -124,7 +123,7 @@ install_color(){
 }
 
 install_font(){
-  if ! lisence_exist; then TermDir_Download;starter;fi
+  if ! lisence_exist; then echo;TermDir_Download;starter;fi
   echo;local font_array=();cd "${TermDir}/fonts";local i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
