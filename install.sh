@@ -135,7 +135,7 @@ install_font(){
   if is_userland; then
     local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
-    echo;bl -s "Please restart Userland session...";echo;return 0;exit
+    echo;bl -s "Please restart Userland session...";echo;return 0;exit;
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
     eval "termux-reload-settings";echo;
