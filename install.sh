@@ -124,7 +124,7 @@ install_color(){
 }
 
 install_font(){
-  if ! lisence_exist; then TermDir_Download;starter;fi
+  if ! lisence_exist; then TermDir_Download;starter;return 1;fi
   echo;local font_array=();cd "${TermDir}/fonts";local i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
