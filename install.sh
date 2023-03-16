@@ -85,7 +85,7 @@ install_ohmyzsh(){
 }
 
 install_zsh(){
-  pkg_build zsh;
+  pkg_build zsh;TermDir_Download;
   if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
     bl -s "Zsh is already installed...";echo;return 0;
   else
