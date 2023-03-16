@@ -116,7 +116,7 @@ install_color(){
     local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
     echo;bl -s "Please restart Userland session...";echo;
-    unset file obj choice;starter;return 0;fi
+    unset file obj choice;starter;return 0;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";echo;
