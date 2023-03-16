@@ -145,6 +145,12 @@ install_font(){
     unset file obj choice;starter;return 0;fi
 }
 
+doend(){
+  unset red green blue success alert;
+  unset pearly TermDir lisence enc var3;
+  exit;
+}
+
 starter(){
   cd;banner;local i=0;echo;
   local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
@@ -156,12 +162,8 @@ starter(){
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
-    5)exit;;
+    5)doend;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
-  unset funcs choice;
 }
 
 starter
-
-unset red green blue success alert;
-unset pearly TermDir lisence enc var3;
