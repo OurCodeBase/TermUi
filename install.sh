@@ -8,11 +8,11 @@ pearly="\e[0;2m";enc="\e[0;m";lisence="${TermDir}/lisence.txt";
 bl(){
   while getopts 'rgbpfias:h' opt; do
     case "${opt}" in
-      r)var3="\e[0;31m";;g)var3="\e[0;32m";;
-      b)var3="\e[0;34m";;p)var3="\e[0;2m";;
+      r)local var3="\e[0;31m";;g)local var3="\e[0;32m";;
+      b)local var3="\e[0;34m";;p)local var3="\e[0;2m";;
       f)var3+="\e[1m";;i)var3+="\e[3m";;
-      a)var3="\e[0;31m\e[1m[∆] ";;
-      s)var3="\e[0;32m\e[1m[√] ";;
+      a)local var3="\e[0;31m\e[1m[∆] ";;
+      s)local var3="\e[0;32m\e[1m[√] ";;
       ?|h)
         echo -e "\e[1mUsage: \e[0;m";
         echo -e " -r  red\n -g  green\n -b  blue\n -p  pearly<Grey>
@@ -29,21 +29,21 @@ is_userland(){
 }
 
 pkg_build(){
-  pkg_info=${1};
+  local pkg_info=${1};
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
   if is_userland; then sudo apt-get install "${pkg_info}" -y;
   else apt-get install "${pkg_info}" -y;fi
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;return 1;exit;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;exit;fi
   echo -e "${enc}";return 0;
 }
 
 dnrepo(){
-  _repo_link=${1};_file_link="${2}";prova="git clone https://github.com/"; # prova = process variable
+  local _repo_link=${1};local _file_link="${2}";local prova="git clone https://github.com/"; # prova = process variable
   if [[ -z "${_repo_link}" ]]; then echo;bl -a "Repository parameter is Empty...";echo;return 1;fi
   if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
   prova+="${_repo_link}.git ${_file_link} --depth 1";
   echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";eval "${prova}";
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Repository Download Failed...";echo;return 1;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Repository Download Failed...";echo;exit;fi
   echo -e "${enc}";return 0;
 }
 
@@ -64,7 +64,7 @@ lisence_exist(){
 
 TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
-  prova="wget https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
+  local prova="wget https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
   echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
   if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
   echo -e "${enc}";
