@@ -88,7 +88,7 @@ install_ohmyzsh(){
 install_zsh(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
-    bl -s "Zsh is already installed...";echo;return 0;
+    echo;bl -s "Zsh is already installed...";echo;return 0;
   else
     pkg_build zsh;
     if is_userland; then
@@ -115,7 +115,7 @@ install_color(){
   if is_userland; then
     local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
-    bl -s "Please restart Userland session...";echo;return 0;
+    echo;bl -s "Please restart Userland session...";echo;return 0;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";echo;
@@ -139,7 +139,7 @@ install_font(){
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
     eval "termux-reload-settings";echo;
-    bl -s "Please restart Termux session...";echo;return 0;fi
+    echo;bl -s "Please restart Termux session...";echo;return 0;fi
   unset file obj choice;
 }
 
