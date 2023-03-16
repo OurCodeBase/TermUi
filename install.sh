@@ -44,7 +44,7 @@ dnrepo(){
   prova+="${_repo_link}.git ${_file_link} --depth 1";
   echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";eval "${prova}";
   if [[ "${?}" != 0 ]]; then echo;bl -a "Repository Download Failed...";echo;exit;fi
-  echo -e "${enc}";return 0;
+  echo -ne "${enc}";return 0;
 }
 
 banner(){
@@ -76,10 +76,15 @@ TermDir_Download(){
 
 install_ohmyzsh(){
   pkg_build git;
-  dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";
+  if [[ $(cat ${lisence}) == *"ohmyzsh:True" ]]; then
+    #statements
+  else
+    if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
+    dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
+    mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
+    cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
+  fi
   if [[ -e "${HOME}/.zshrc" ]]; then
-  mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
-  cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
   sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";
   sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc";
   return 0;
@@ -88,16 +93,15 @@ install_ohmyzsh(){
 install_zsh(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
-    echo;bl -s "Zsh is already installed...";echo;exit;
-  else
-    pkg_build zsh;
+  echo;bl -s "Zsh is already installed...";echo;exit;
+  else pkg_build zsh;
     if is_userland; then
-      echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
-      if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-      echo;bl -s "Please restart your Userland session...";echo;starter;return 0;
+    echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
+    if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
+    echo;bl -s "Please restart your Userland session...";echo;starter;return 0;
     else chsh -s zsh;
-      if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-      echo;bl -s "Please restart your Termux session...";echo;starter;return 0;
+    if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
+    echo;bl -s "Please restart your Termux session...";echo;starter;return 0;
     fi
   fi
 }
@@ -112,15 +116,14 @@ install_color(){
   if [[ "${choice}" -ge "${#color_array[@]}" ]]; then
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
-    local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
-    echo;bl -s "Please restart Userland session...";echo;
-    unset file obj choice;starter;return 0;
-  else
-    yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
-    eval "termux-reload-settings";echo;
-    echo;bl -s "Please restart Termux session...";echo;
-    unset file obj choice;starter;return 0;fi
+  local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
+  (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
+  echo;bl -s "Please restart Userland session...";echo;
+  unset file obj choice;starter;return 0;
+  else yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
+  eval "termux-reload-settings";echo;
+  echo;bl -s "Please restart Termux session...";echo;
+  unset file obj choice;starter;return 0;fi
 }
 
 install_font(){
@@ -133,15 +136,14 @@ install_font(){
   if [[ "${choice}" -ge "${#font_array[@]}" ]]; then
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
-    local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
-    (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
-    echo;bl -s "Please restart Userland session...";echo;
-    unset file obj choice;starter;return 0;
-  else
-    yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
-    eval "termux-reload-settings";echo;
-    echo;bl -s "Please restart Termux session...";echo;
-    unset file obj choice;starter;return 0;fi
+  local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
+  (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
+  echo;bl -s "Please restart Userland session...";echo;
+  unset file obj choice;starter;return 0;
+  else yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
+  eval "termux-reload-settings";echo;
+  echo;bl -s "Please restart Termux session...";echo;
+  unset file obj choice;starter;return 0;fi
 }
 
 doend(){
@@ -155,9 +157,9 @@ starter(){
   cd;banner;local i=0;echo;
   local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
   for funcs in ${funcs_array[@]} ; do
-    if [[ ${funcs} == "Exit" ]]; then
-      echo "[$((i++))] ${funcs}";
-    else echo "[$((i++))] Install ${funcs}";fi
+  if [[ ${funcs} == "Exit" ]]; then
+  echo "[$((i++))] ${funcs}";
+  else echo "[$((i++))] Install ${funcs}";fi
   done;echo;read -p ">> " choice;
   case ${choice} in
     0)install_font;;1)install_color;;
