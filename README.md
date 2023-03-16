@@ -16,12 +16,22 @@ This is a simple documentation to make your termux stylish with zsh.
 * Free Time
 
 #### Installation !
-Simply paste it and don't hit the `enter` button, gently press it.
+Simple Method 🔻
+```shell
+bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
+```
+
+Complex Method 🔻
+```shell
+wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh
+chmod +x install.sh
+bash install.sh
+```
+
+Faster Method 🔻
 ```shell
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
-
-If you stuck anywhere you have to press `enter` button  simply.
 
 #### Recommended !
 * Shortcut buttons (Only for *Termux*)
