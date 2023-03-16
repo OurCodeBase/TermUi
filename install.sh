@@ -104,7 +104,7 @@ install_zsh(){
 }
 
 install_color(){
-  if ! lisence_exist; then TermDir_Download;starter;fi
+  if ! lisence_exist; then TermDir_Download;starter;return 1;fi
   echo;local color_array=();cd "${TermDir}/colors";local i=0;
   for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
   for obj in ${color_array[@]} ; do
@@ -145,12 +145,16 @@ install_font(){
 
 starter(){
   cd;banner;local i=0;echo;
-  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh");
-  for funcs in ${funcs_array[@]} ; do echo "[$((i++))] Install ${funcs}";done;
-  echo;read -p ">> " choice;
+  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
+  for funcs in ${funcs_array[@]} ; do
+    if [[ ${funcs} == "Exit" ]]; then
+      echo "[$((i++))] ${funcs}";
+    else echo "[$((i++))] Install ${funcs}";fi
+  done;echo;read -p ">> " choice;
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
+    5)exit;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
   unset funcs choice;
 }
