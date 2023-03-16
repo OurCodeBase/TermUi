@@ -162,7 +162,7 @@ starter(){
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
-    5)doend;;
+    5)echo;doend;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
 }
 
