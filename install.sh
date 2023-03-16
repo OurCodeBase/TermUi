@@ -119,7 +119,7 @@ install_color(){
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";echo;
-    echo;bl -s "Please restart Termux session...";echo;exit;fi
+    echo;bl -s "Please restart Termux session...";echo;starter;return 0;fi
   unset file obj choice;
 }
 
@@ -139,7 +139,7 @@ install_font(){
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
     eval "termux-reload-settings";echo;
-    echo;bl -s "Please restart Termux session...";echo;exit;fi
+    echo;bl -s "Please restart Termux session...";echo;starter;return 0;fi
   unset file obj choice;
 }
 
