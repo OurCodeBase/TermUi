@@ -69,7 +69,7 @@ TermDir_Download(){
   if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
   echo -e "${enc}";
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;return 1;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;exit;fi
   echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
