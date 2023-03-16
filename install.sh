@@ -33,7 +33,7 @@ pkg_build(){
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
   if is_userland; then sudo apt-get install "${pkg_info}" -y;
   else apt-get install "${pkg_info}" -y;fi
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;exit;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;return 1;exit;fi
   echo -e "${enc}";return 0;
 }
 
