@@ -100,7 +100,6 @@ install_zsh(){
       echo;bl -s "Please restart your Termux session...";echo;starter;return 0;
     fi
   fi
-  
 }
 
 install_color(){
@@ -137,7 +136,7 @@ install_font(){
     local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
     echo;bl -s "Please restart Userland session...";echo;
-    unset file obj choice;starter;return 0;fi
+    unset file obj choice;starter;return 0;
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
     eval "termux-reload-settings";echo;
@@ -148,6 +147,7 @@ install_font(){
 doend(){
   unset red green blue success alert;
   unset pearly TermDir lisence enc var3;
+  unset funcs choice;
   exit;
 }
 
