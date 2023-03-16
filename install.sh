@@ -67,8 +67,8 @@ TermDir_Download(){
     local prova="wget https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
     echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
     if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
-    echo -e "${enc}";
-  else echo;fi
+    echo -ne "${enc}";
+  fi
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;exit;fi
   echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
