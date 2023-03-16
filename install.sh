@@ -155,3 +155,5 @@ starter(){
 }
 
 starter
+
+unset red green blue success alert pearly TermDir lisence enc;
