@@ -103,7 +103,7 @@ install_zsh(){
 
 install_color(){
   if ! lisence_exist; then TermDir_Download;starter;fi
-  echo;color_array=();cd "${TermDir}/colors";let i=0;
+  echo;local color_array=();cd "${TermDir}/colors";local i=0;
   for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
   for obj in ${color_array[@]} ; do
   obj=${obj/".properties"/};echo "[$((i++))] ${obj}";done;
@@ -111,45 +111,46 @@ install_color(){
   if [[ "${choice}" -ge "${#color_array[@]}" ]]; then
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
-    hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
+    local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
     bl -s "Please restart Userland session...";echo;return 0;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";echo;
-    bl -s "Please restart Termux session...";echo;return 0;
-  fi
+    bl -s "Please restart Termux session...";echo;return 0;fi
+  unset file obj choice;
 }
 
 install_font(){
   if ! lisence_exist; then TermDir_Download;starter;fi
-  echo;font_array=();cd "${TermDir}/fonts";let i=0;
+  echo;local font_array=();cd "${TermDir}/fonts";local i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
-  obj=${obj/".ttf"/};echo "[$((i++))] ${obj}";done;
+  local obj=${obj/".ttf"/};echo "[$((i++))] ${obj}";done;
   echo;read -p ">> " choice;
   if [[ "${choice}" -ge "${#font_array[@]}" ]]; then
   echo;bl -a "Invalid Input...";echo;return 1;fi
   if is_userland; then
-    hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
+    local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
     echo;bl -s "Please restart Userland session...";echo;return 0;
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
     eval "termux-reload-settings";echo;
-    bl -s "Please restart Termux session...";echo;return 0;
-  fi
+    bl -s "Please restart Termux session...";echo;return 0;fi
+  unset file obj choice;
 }
 
 starter(){
-  cd;banner;let i=0;echo;
-  funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh");
+  cd;banner;local i=0;echo;
+  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh");
   for funcs in ${funcs_array[@]} ; do echo "[$((i++))] Install ${funcs}";done;
   echo;read -p ">> " choice;
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
+  unset funcs choice;
 }
 
 starter
