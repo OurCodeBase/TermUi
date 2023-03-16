@@ -71,7 +71,7 @@ TermDir_Download(){
   else echo;fi
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;exit;fi
-  echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
+  echo -ne "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
 install_ohmyzsh(){
@@ -94,10 +94,10 @@ install_zsh(){
     if is_userland; then
       echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
       if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-      bl -s "Please restart your Userland session...";echo;return 0;
+      echo;bl -s "Please restart your Userland session...";echo;return 0;
     else chsh -s zsh;
       if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-      bl -s "Please restart your Termux session...";echo;return 0;
+      echo;bl -s "Please restart your Termux session...";echo;return 0;
     fi
   fi
   
