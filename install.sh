@@ -34,7 +34,7 @@ pkg_build(){
   if is_userland; then sudo apt-get install "${pkg_info}" -y;
   else apt-get install "${pkg_info}" -y;fi
   if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;exit;fi
-  echo -e "${enc}";return 0;
+  echo -ne "${enc}";return 0;
 }
 
 dnrepo(){
@@ -65,10 +65,10 @@ TermDir_Download(){
   if [[ -d "${TermDir}" ]]; then mv "${TermDir}" "${TermDir}.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
   if [[ ! -f "TermUi.zip" ]]; then
     local prova="wget https://github.com/strangecode4u/TermUi/raw/main/TermUi.zip";
-    bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
+    echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
     if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
     echo -e "${enc}";
-  fi
+  else echo;fi
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
   if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;exit;fi
   echo -e "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
@@ -103,7 +103,7 @@ install_zsh(){
 }
 
 install_color(){
-  if ! lisence_exist; then echo;TermDir_Download;starter;fi
+  if ! lisence_exist; then TermDir_Download;starter;fi
   echo;local color_array=();cd "${TermDir}/colors";local i=0;
   for file in *.properties ; do color_array=(${color_array[@]} "${file}");done;cd;
   for obj in ${color_array[@]} ; do
@@ -123,7 +123,7 @@ install_color(){
 }
 
 install_font(){
-  if ! lisence_exist; then echo;TermDir_Download;starter;fi
+  if ! lisence_exist; then TermDir_Download;starter;fi
   echo;local font_array=();cd "${TermDir}/fonts";local i=0;
   for file in *.ttf ; do font_array=(${font_array[@]} "${file}");done;cd;
   for obj in ${font_array[@]} ; do
