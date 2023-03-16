@@ -76,8 +76,9 @@ TermDir_Download(){
 
 install_ohmyzsh(){
   pkg_build git;
-  if [[ $(cat ${lisence}) == *"ohmyzsh:True" ]]; then
+  if [[ $(cat ${lisence}) == *"ohmyzsh:True"* ]]; then
     #statements
+    echo;
   else
     if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
     dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
