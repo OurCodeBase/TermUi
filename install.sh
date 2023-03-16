@@ -115,11 +115,11 @@ install_color(){
   if is_userland; then
     local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
-    echo;bl -s "Please restart Userland session...";echo;return 0;
+    echo;bl -s "Please restart Userland session...";echo;return 0;exit;
   else
     yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
     eval "termux-reload-settings";echo;
-    bl -s "Please restart Termux session...";echo;return 0;fi
+    echo;bl -s "Please restart Termux session...";echo;return 0;exit;fi
   unset file obj choice;
 }
 
@@ -135,11 +135,11 @@ install_font(){
   if is_userland; then
     local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
     (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
-    echo;bl -s "Please restart Userland session...";echo;return 0;
+    echo;bl -s "Please restart Userland session...";echo;return 0;exit
   else
     yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
     eval "termux-reload-settings";echo;
-    echo;bl -s "Please restart Termux session...";echo;return 0;fi
+    echo;bl -s "Please restart Termux session...";echo;return 0;exit;fi
   unset file obj choice;
 }
 
@@ -157,4 +157,5 @@ starter(){
 
 starter
 
-unset red green blue success alert pearly TermDir lisence enc;
+unset red green blue success alert;
+unset pearly TermDir lisence enc var3;
