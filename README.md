@@ -5,38 +5,38 @@
 <hr>
 
 **_UPCOMING SOON..._**
-* ASCII
+* ᴀꜱᴄɪɪ
 
 <hr>
 
 **_REQUIREMENTS..._**
-* Internet Connection
-* Working Terminal
-* Termux || Userland
+* ɪɴᴛᴇʀɴᴇᴛ ᴄᴏɴɴᴇᴄᴛɪᴏɴ
+* ᴡᴏʀᴋɪɴɢ ᴛᴇʀᴍɪɴᴀʟ
+* ᴛᴇʀᴍᴜx || ᴜꜱᴇʀʟᴀɴᴅ
 
 <hr>
 
 **_PACKAGES..._**
-* `unzip`
-* `wget`
+* `𝚞𝚗𝚣𝚒𝚙`
+* `𝚠𝚐𝚎𝚝`
 
 <hr>
 
 **_INSTALLATION..._**
 
-1️⃣ Simple Method
+* ꜱɪᴍᴘʟᴇ ᴍᴇᴛʜᴏᴅ
 ```shell
 bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
-2️⃣ Complex Method
+* ᴄᴏᴍᴘʟᴇx ᴍᴇᴛʜᴏᴅ
 ```shell
-wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh
+wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh"
 chmod +x install.sh
 bash install.sh
 ```
 
-3️⃣ Faster Method
+* ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ
 ```shell
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
