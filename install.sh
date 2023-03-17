@@ -76,18 +76,16 @@ TermDir_Download(){
 
 install_ohmyzsh(){
   pkg_build git;
-  if [[ $(cat ${lisence}) == *"ohmyzsh:True"* ]]; then
+  if [[ $(cat ${lisence}) != *"ohmyzsh:True"* ]]; then
     #statements
-    echo;
-  else
     if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
-    dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
-    mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
+      dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
+    if [[ -f "${HOME}/.zshrc" ]]; then
+      mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
     cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
+    sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";
+    sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc";
   fi
-  if [[ -e "${HOME}/.zshrc" ]]; then
-  sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";
-  sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc";
   return 0;
 }
 
@@ -99,10 +97,10 @@ install_zsh(){
     if is_userland; then
     echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
     if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-    echo;bl -s "Please restart your Userland session...";echo;starter;return 0;
+    echo;bl -s "Please restart your Userland session...";echo;doend;return 0;
     else chsh -s zsh;
     if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
-    echo;bl -s "Please restart your Termux session...";echo;starter;return 0;
+    echo;bl -s "Please restart your Termux session...";echo;doend;return 0;
     fi
   fi
 }
