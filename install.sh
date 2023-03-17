@@ -57,8 +57,9 @@ banner(){
 }
 
 lisence_exist(){
-  if [ ! -f "${lisence}" ] || [ ! -f "/home/user/.termux/lisence.txt" ]; then return 1;fi
-  if [ $(cat ${lisence}) == *"Author:Harsh B"* ] || [ $(cat "/home/user/.termux/lisence.txt") == *"Author:Harsh B"* ]; then return 0;else return 1;fi
+  if [[ -f "${lisence}" ]]; then return 0;
+  elif [[ -f "/home/user/.termux/lisence.txt" ]]; then return 0;
+  else return 1;fi
 }
 
 TermDir_Download(){
