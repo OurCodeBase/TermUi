@@ -31,10 +31,13 @@ bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/inst
 
 * ᴄᴏᴍᴘʟᴇx ᴍᴇᴛʜᴏᴅ
 ```shell
-wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";chmod +x install.sh;bash install.sh;
+var3="https://";var3+="raw.githubusercontent.com/";
+var3+="strangecode4u/";var3+="TermUi";var3+="main/";
+var3+="install.sh";wget ${var3};
+chmod +x install.sh;ls;unset var3;
 ```
 
-* ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ
+* ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 ```shell
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
@@ -45,7 +48,7 @@ yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https:/
 * ꜱʜᴏʀᴛᴄᴜᴛ ʙᴜᴛᴛᴏɴꜱ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
 
-𝙲𝚘𝚍𝚎:
+* 𝙲𝚘𝚍𝚎:
 ```shell
 wget https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties && mv -f termux.properties ~/.termux/
 ```
