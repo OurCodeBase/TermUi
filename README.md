@@ -2,14 +2,19 @@
 <img src="https://github.com/strangecode4u/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/screenshot.jpg">
 <img src="https://github.com/strangecode4u/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/dracula-terminal.jpg">
 
+<hr>
 
 **_UPCOMING SOON..._**
 * ASCII
+
+<hr>
 
 **_REQUIREMENTS..._**
 * Internet Connection
 * Working Terminal
 * Termux || Userland
+
+<hr>
 
 **_INSTALLATION..._**
 
@@ -30,7 +35,9 @@ Faster Method 🔻
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
-#### Recommended !
+<hr>
+
+**_RECOMMENDED..._**
 * Shortcut buttons (Only for *Termux*)
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
 
