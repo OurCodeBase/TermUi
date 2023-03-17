@@ -171,6 +171,7 @@ doend(){
 }
 
 starter(){
+  if is_userland ;then ${HOME}="/home/user";fi
   cd;banner;local i=0;echo;
   local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
   for funcs in ${funcs_array[@]} ; do
