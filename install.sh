@@ -85,8 +85,8 @@ install_ohmyzsh(){
     cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";
     sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc";
+    echo "ohmyzsh:True" >> ${lisence};echo "Done";
   fi
-  return 0;
 }
 
 install_zsh(){
