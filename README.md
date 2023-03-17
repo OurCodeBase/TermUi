@@ -4,16 +4,16 @@ This is a simple documentation to make your termux stylish with zsh.
 #### Preview !
 <img src="https://github.com/strangecode4u/Docx/blob/2317de8030e1c96ecef0da48cd5cbe29d5fcb43e/termux-style/screenshot.jpg">
 
-#### Upcoming Features !
-* ASCII
-* Improvement in UI
-* Bug Fixes
+| **_UPCOMING SOON !_** |
+|:---------------------:|
+|         ASCII         |
+|       Bug Fixes       |
 
-#### Requirements !
-* Termux
-* Internet Connection
-* Working Terminal
-* Free Time
+|  **_REQUIREMENTS_** |
+|:-------------------:|
+| Internet Connection |
+|      No Trouble     |
+|      Free Time      |
 
 #### Installation !
 Simple Method 🔻
