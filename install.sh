@@ -57,10 +57,8 @@ banner(){
 }
 
 lisence_exist(){
-  if [[ -f "${lisence}" ]]; then return 0;
-  elif [[ -f "/home/user/.termux/lisence.txt" ]]; then return 0;
-  lisence="/home/user/.termux/lisence.txt";
-  else return 1;fi
+  if [[ ! -f "${lisence}" ]]; then return 1;fi
+  if [[ $(cat ${lisence}) == *"Author:Harsh B"* ]]; then return 0;else return 1;fi
 }
 
 TermDir_Download(){
@@ -77,7 +75,6 @@ TermDir_Download(){
 }
 
 install_ohmyzsh(){
-  if is_userland; then HOME="/home/user" &> /dev/null;fi
   if [[ $(cat ${lisence}) != *"ohmyzsh:True"* ]]; then
     if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
     pkg_build git;dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
@@ -93,7 +90,6 @@ install_ohmyzsh(){
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
     local var5=${var4/"index"/"${theme_array[${choice}]}"};local var6=${var5/".zsh-theme"/};
     sed -i "${var6}" "${HOME}/.zshrc";echo "ohmyzsh:True" >> ${lisence};
-    if is_userland; then mv -f "${HOME}/.zshrc" "/root/.zshrc";fi
     echo;bl -s "Please restart your session...";echo;
     unset file obj choice theme_array;starter;return 0;
   else
@@ -106,7 +102,6 @@ install_ohmyzsh(){
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
     local var5=${var4/"index"/"${theme_array[${choice}]}"};local var6=${var5/".zsh-theme"/};
     sed -i "${var6}" "${HOME}/.zshrc";echo "ohmyzsh:True" >> ${lisence};
-    if is_userland; then mv -f "${HOME}/.zshrc" "/root/.zshrc";fi
     echo;bl -s "Please restart your session...";echo;
     unset file obj choice theme_array;starter;return 0;
   fi
