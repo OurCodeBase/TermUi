@@ -16,21 +16,27 @@
 
 <hr>
 
+**_PACKAGES..._**
+* `unzip`
+* `wget`
+
+<hr>
+
 **_INSTALLATION..._**
 
-Simple Method 🔻
+1️⃣ Simple Method
 ```shell
 bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
-Complex Method 🔻
+2️⃣ Complex Method
 ```shell
 wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh
 chmod +x install.sh
 bash install.sh
 ```
 
-Faster Method 🔻
+3️⃣ Faster Method
 ```shell
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
