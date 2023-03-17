@@ -42,10 +42,10 @@ yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https:/
 <hr>
 
 **_RECOMMENDED..._**
-* Shortcut buttons (Only for *Termux*)
+* ꜱʜᴏʀᴛᴄᴜᴛ ʙᴜᴛᴛᴏɴꜱ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
 
-Code :
+𝙲𝚘𝚍𝚎:
 ```shell
 wget https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties && mv -f termux.properties ~/.termux/
 ```
