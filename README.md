@@ -31,8 +31,7 @@ bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/inst
 
 * ᴄᴏᴍᴘʟᴇx ᴍᴇᴛʜᴏᴅ
 ```shell
-wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";
-chmod +x install.sh;bash install.sh;
+wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";chmod +x install.sh;bash install.sh;
 ```
 
 * ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ
