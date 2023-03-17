@@ -83,7 +83,7 @@ install_ohmyzsh(){
     mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
     cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
     local theme_array=();cd "${HOME}/.oh-my-zsh/themes";
-    for file in *.zsh-theme ; do theme_array=(${theme_array[@]} "${file}");done;
+    for file in *.zsh-theme ; do theme_array=(${theme_array[@]} "${file}");done;local i=0;
     for obj in ${theme_array[@]} ; do obj=${obj/".zsh-theme"/};echo "[$((i++))] ${obj}";done;
     echo;read -p ">> " choice;
     if [[ "${choice}" -ge "${#color_array[@]}" ]]; then
