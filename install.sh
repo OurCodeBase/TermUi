@@ -86,7 +86,7 @@ install_ohmyzsh(){
     for file in *.zsh-theme ; do theme_array=(${theme_array[@]} "${file}");done;local i=0;
     for obj in ${theme_array[@]} ; do obj=${obj/".zsh-theme"/};echo "[$((i++))] ${obj}";done;
     echo;read -p ">> " choice;
-    if [[ "${choice}" -ge "${#color_array[@]}" ]]; then
+    if [[ "${choice}" -ge "${#theme_array[@]}" ]]; then
     echo;bl -a "Invalid Input...";echo;return 1;fi
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
     local var5=${var4/"index"/"${theme_array[${choice}]}"};echo ${var5};
