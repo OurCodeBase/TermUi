@@ -1,21 +1,16 @@
-### Hello world !
-This is a simple documentation to make your termux stylish with zsh.
-
-#### Preview !
+**_PREVIEW..._**
 <img src="https://github.com/strangecode4u/Docx/blob/2317de8030e1c96ecef0da48cd5cbe29d5fcb43e/termux-style/screenshot.jpg">
 
-| **_UPCOMING SOON !_** |
-|:---------------------:|
-|         ASCII         |
-|       Bug Fixes       |
+**_UPCOMING SOON..._**
+* ASCII
 
-|  **_REQUIREMENTS_** |
-|:-------------------:|
-| Internet Connection |
-|      No Trouble     |
-|      Free Time      |
+**_REQUIREMENTS..._**
+* Internet Connection
+* Working Terminal
+* Termux || Userland
 
-#### Installation !
+**_INSTALLATION..._**
+
 Simple Method 🔻
 ```shell
 bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
