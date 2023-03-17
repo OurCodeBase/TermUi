@@ -59,6 +59,7 @@ banner(){
 lisence_exist(){
   if [[ -f "${lisence}" ]]; then return 0;
   elif [[ -f "/home/user/.termux/lisence.txt" ]]; then return 0;
+  lisence="/home/user/.termux/lisence.txt";
   else return 1;fi
 }
 
