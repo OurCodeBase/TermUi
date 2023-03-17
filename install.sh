@@ -83,25 +83,27 @@ install_ohmyzsh(){
     cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
     local theme_array=();cd "${HOME}/.oh-my-zsh/themes";
     for file in *.zsh-theme ; do theme_array=(${theme_array[@]} "${file}");done;local i=0;
-    echo;for obj in ${theme_array[@]} ; do obj=${obj/".zsh-theme"/};echo "[$((i++))] ${obj}";done;
+    cd;echo;for obj in ${theme_array[@]} ; do obj=${obj/".zsh-theme"/};echo "[$((i++))] ${obj}";done;
     echo;read -p ">> " choice;
     if [[ "${choice}" -ge "${#theme_array[@]}" ]]; then
     echo;bl -a "Invalid Input...";echo;return 1;fi
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
     local var5=${var4/"index"/"${theme_array[${choice}]}"};local var6=${var5/".zsh-theme"/};
     sed -i "${var6}" "${HOME}/.zshrc";echo "ohmyzsh:True" >> ${lisence};
-    echo;bl -s "Please restart your session...";echo;starter;return 0;
+    echo;bl -s "Please restart your session...";echo;
+    unset file obj choice theme_array;starter;return 0;
   else
     local theme_array=();cd "${HOME}/.oh-my-zsh/themes";
     for file in *.zsh-theme ; do theme_array=(${theme_array[@]} "${file}");done;local i=0;
-    echo;for obj in ${theme_array[@]} ; do obj=${obj/".zsh-theme"/};echo "[$((i++))] ${obj}";done;
+    cd;echo;for obj in ${theme_array[@]} ; do obj=${obj/".zsh-theme"/};echo "[$((i++))] ${obj}";done;
     echo;read -p ">> " choice;
     if [[ "${choice}" -ge "${#theme_array[@]}" ]]; then
     echo;bl -a "Invalid Input...";echo;return 1;fi
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
     local var5=${var4/"index"/"${theme_array[${choice}]}"};local var6=${var5/".zsh-theme"/};
     sed -i "${var6}" "${HOME}/.zshrc";echo "ohmyzsh:True" >> ${lisence};
-    echo;bl -s "Please restart your session...";echo;starter;return 0;
+    echo;bl -s "Please restart your session...";echo;
+    unset file obj choice theme_array;starter;return 0;
   fi
 }
 
