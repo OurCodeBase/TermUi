@@ -89,11 +89,12 @@ install_ohmyzsh(){
     echo;bl -a "Invalid Input...";echo;return 1;fi
     sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
     local var5=${var4/"index"/"${theme_array[${choice}]}"};echo ${var5};
-    #sed -i "${var5}" "${HOME}/.zshrc";
+    sed -i "${var5}" "${HOME}/.zshrc";
     #echo "ohmyzsh:True" >> ${lisence};echo "Done";
   else
     #sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";
     #sed -i '1iZSH_THEME="agnoster"' "${HOME}/.zshrc";
+    echo "Hello World";
   fi
 }
 
