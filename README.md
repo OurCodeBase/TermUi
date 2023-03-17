@@ -41,12 +41,3 @@ Code :
 ```shell
 wget https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties && mv -f termux.properties ~/.termux/
 ```
-
-* Dracula Color (Only for *Termux*)
-
-<img src=https://github.com/strangecode4u/Docx/blob/03b66a5fe908a56fa9d3647a0d7cae9bd2ba870e/android-userland-style/assets/dracula-terminal.jpg>
-
-Code :
-```shell
-wget https://raw.githubusercontent.com/strangecode4u/Docx/main/android-kali-gui/assets/colors.properties && mv -f colors.properties ~/.termux/
-```
