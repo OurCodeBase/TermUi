@@ -57,8 +57,8 @@ banner(){
 }
 
 lisence_exist(){
-  if [[ ! -f "${lisence}" ]]; then return 1;fi
-  if [[ $(cat ${lisence}) == *"Author:Harsh B"* ]]; then return 0;else return 1;fi
+  if [ ! -f "${lisence}" ] || [ ! -f "/home/user/.termux/lisence.txt" ]; then return 1;fi
+  if [ $(cat ${lisence}) == *"Author:Harsh B"* ] || [ $(cat "/home/user/.termux/lisence.txt") == *"Author:Harsh B"* ]; then return 0;else return 1;fi
 }
 
 TermDir_Download(){
@@ -75,6 +75,7 @@ TermDir_Download(){
 }
 
 install_ohmyzsh(){
+  if is_userland; then HOME="/home/user" &> /dev/null;fi
   if [[ $(cat ${lisence}) != *"ohmyzsh:True"* ]]; then
     if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
     pkg_build git;dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
@@ -173,7 +174,6 @@ doend(){
 }
 
 starter(){
-  if is_userland ;then HOME="/home/user" &> /dev/null;fi
   cd;banner;local i=0;echo;
   local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
   for funcs in ${funcs_array[@]} ; do
