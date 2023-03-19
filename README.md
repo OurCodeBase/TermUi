@@ -42,7 +42,7 @@ yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https:/
 
 * ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
 ```shell
-yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
+yes | (apt update && apt install unzip) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
 <hr>
