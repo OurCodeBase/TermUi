@@ -29,20 +29,19 @@
 bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
-* ᴄᴏᴍᴘʟᴇx ᴍᴇᴛʜᴏᴅ
-```shell
-wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";chmod +x install.sh;ls;
-```
-
 * ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 ```shell
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
-
 * ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
 ```shell
 yes | (sudo apt update && sudo apt install unzip) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
+```
+
+* ᴄᴏᴍᴘʟᴇx ᴍᴇᴛʜᴏᴅ
+```shell
+wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";chmod +x install.sh;ls;
 ```
 
 <hr>
