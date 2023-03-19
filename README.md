@@ -2,21 +2,31 @@
 
 ᴛʜɪꜱ ᴛᴏᴏʟ ᴄᴀɴ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ʟᴏᴏᴋꜱ ɪɴ ꜱᴇᴄᴏɴᴅꜱ.
 
+ᴏɴᴇ ᴛᴏᴜᴄʜ ᴛᴇʀᴍɪɴᴀʟ ᴄᴏꜱᴛᴜᴍɪᴢᴀᴛɪᴏɴ. ᴛᴇʀᴍɪɴᴀʟ ᴜɪ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ ᴀɴᴅ ᴛᴇʀᴍᴜx ᴀᴘᴘꜱ ɪɴᴄʟᴜᴅɪɴɢ ᴢꜱʜ, ᴢꜱʜ ꜱʏɴᴛᴀx ʜɪɢʜʟɪɢʜᴛɪɴɢ, ᴛʜᴇᴍᴇꜱ, ꜰᴏɴᴛꜱ ᴀɴᴅ ᴍᴀɴʏ ᴍᴏʀᴇ.
+
 <hr>
 
 **_PREVIEW..._**
+
+ᴏɴᴇ ᴅᴀʀᴋ ᴛʜᴇᴍᴇ
 <img src="https://github.com/strangecode4u/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/screenshot.jpg">
+ᴅʀᴀᴄᴜʟᴀ ᴛʜᴇᴍᴇ
 <img src="https://github.com/strangecode4u/TermUi/blob/98a80dca346c43e863f6665b65d59b1e3b076dd8/screenshot2.jpg">
 
 <hr>
 
 **_UPCOMING SOON..._**
+
+ᴄᴏɴᴛʀɪʙᴜᴛᴇ ᴛʜɪꜱ ʀᴇᴘᴏꜱɪᴛᴏʀʏ ᴛᴏ ᴀᴅᴅ ɴᴇᴡ ꜰᴇᴀᴛᴜʀᴇꜱ.
+ᴛʜᴇʀᴇ ᴀʀᴇ ꜱᴏᴍᴇ ᴜᴘᴄᴏᴍɪɴɢ ꜰᴇᴀᴛᴜʀᴇꜱ ᴛʜᴀᴛ ᴡɪʟʟ ᴄᴏᴍᴇ ꜱᴏᴏɴ !
 * ᴀꜱᴄɪɪ
 * ᴢꜱʜ ᴀᴜᴛᴏᴄᴏᴍᴘʟᴇᴛɪᴏɴ
 
 <hr>
 
 **_REQUIREMENTS..._**
+
+ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴀᴛ ʏᴏᴜ ʜᴀᴠᴇ ᴛʜᴇꜱᴇ ᴘᴏɪɴᴛꜱ.
 * ɪɴᴛᴇʀɴᴇᴛ ᴄᴏɴɴᴇᴄᴛɪᴏɴ
 * ᴡᴏʀᴋɪɴɢ ᴛᴇʀᴍɪɴᴀʟ
 * ᴛᴇʀᴍᴜx || ᴜꜱᴇʀʟᴀɴᴅ
@@ -24,14 +34,17 @@
 <hr>
 
 **_PACKAGES..._**
+
+ᴛʜᴇꜱᴇ ᴘᴀᴄᴋᴀɢᴇꜱ ᴀʀᴇ ᴜꜱᴇᴅ ɪɴ ᴛʜɪꜱ ᴛᴏᴏʟ. ɪɴᴄʟᴜᴅɪɴɢ ᴢꜱʜ, ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ.
 * `𝚞𝚗𝚣𝚒𝚙`
 * `𝚠𝚐𝚎𝚝`
+* `𝚐𝚒𝚝`
 
 <hr>
 
 **_INSTALLATION..._**
 
-* ꜱɪᴍᴘʟᴇ ᴍᴇᴛʜᴏᴅ
+* ᴊᴜꜱᴛ ᴘᴀꜱᴛᴇ ɪᴛ ᴛᴏ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ᴀɴᴅ ʜɪᴛ ᴛʜᴇ ᴇɴᴛᴇʀ ʙᴜᴛᴛᴏɴ.
 ```shell
 bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
@@ -46,7 +59,7 @@ yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https:/
 yes | (sudo apt update && sudo apt install unzip) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
-* ᴄᴏᴍᴘʟᴇx ᴍᴇᴛʜᴏᴅ
+* ᴄᴏᴘʏ ᴀɴᴅ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ʟɪɴᴇ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɪɴꜱᴛᴀʟʟ.ꜱʜ ɪɴᴛᴏ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ᴀɴᴅ ᴇxᴇᴄᴜᴛᴇ ɪᴛ ᴍᴀɴᴜᴀʟʟʏ.
 ```shell
 wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";chmod +x install.sh;ls;
 ```
@@ -55,9 +68,7 @@ wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";ch
 
 **_RECOMMENDED..._**
 * ꜱʜᴏʀᴛᴄᴜᴛ ʙᴜᴛᴛᴏɴꜱ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
-<img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
-
-* 𝙲𝚘𝚍𝚎:
 ```shell
 wget https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties && mv -f termux.properties ~/.termux/
 ```
+<img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
