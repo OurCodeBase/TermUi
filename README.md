@@ -1,3 +1,9 @@
+**_INTRODUCTION..._**
+
+ᴛʜɪꜱ ᴛᴏᴏʟ ᴄᴀɴ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ʟᴏᴏᴋꜱ ɪɴ ꜱᴇᴄᴏɴᴅꜱ.
+
+<hr>
+
 **_PREVIEW..._**
 <img src="https://github.com/strangecode4u/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/screenshot.jpg">
 <img src="https://github.com/strangecode4u/TermUi/blob/98a80dca346c43e863f6665b65d59b1e3b076dd8/screenshot2.jpg">
@@ -6,6 +12,7 @@
 
 **_UPCOMING SOON..._**
 * ᴀꜱᴄɪɪ
+* ᴢꜱʜ ᴀᴜᴛᴏᴄᴏᴍᴘʟᴇᴛɪᴏɴ
 
 <hr>
 
