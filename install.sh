@@ -93,7 +93,7 @@ install_ohmyzsh(){
   local var5=${var4/"index"/"${theme_array[${choice}]}"};local var6=${var5/".zsh-theme"/};
   sed -i "${var6}" "${HOME}/.zshrc";
   echo;bl -s "Please restart your session...";echo;
-  unset file obj choice theme_array;starter;return 0;
+  unset file obj choice theme_array;return 0;
 }
 
 install_zsh(){
@@ -126,11 +126,11 @@ install_color(){
   local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
   (yes | cp -f "${TermDir}/colors/${color_array[${choice}]}" "${hostdir}/.termux/colors.properties") &> /dev/null;
   echo;bl -s "Please restart Userland session...";echo;
-  unset file obj choice;starter;return 0;
+  unset file obj choice;return 0;
   else yes | cp "${TermDir}/colors/${color_array[${choice}]}" "${TermDir}/colors.properties";
   eval "termux-reload-settings";echo;
   echo;bl -s "Please restart Termux session...";echo;
-  unset file obj choice;starter;return 0;fi
+  unset file obj choice;return 0;fi
 }
 
 install_font(){
@@ -146,11 +146,11 @@ install_font(){
   local hostdir="/host-rootfs/data/data/tech.ula/files/home";mkdir -p ${hostdir}/.termux;
   (yes | cp -f "${TermDir}/fonts/${font_array[${choice}]}" "${hostdir}/.termux/font.ttf") &> /dev/null;
   echo;bl -s "Please restart Userland session...";echo;
-  unset file obj choice;starter;return 0;
+  unset file obj choice;return 0;
   else yes | cp "${TermDir}/fonts/${font_array[${choice}]}" "${TermDir}/font.ttf";
   eval "termux-reload-settings";echo;
   echo;bl -s "Please restart Termux session...";echo;
-  unset file obj choice;starter;return 0;fi
+  unset file obj choice;return 0;fi
 }
 
 doend(){
