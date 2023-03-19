@@ -81,6 +81,7 @@ install_ohmyzsh(){
     pkg_build git;dnrepo "ohmyzsh/ohmyzsh" "${HOME}/.oh-my-zsh";fi
     if [[ -f "${HOME}/.zshrc" ]]; then
     mv "${HOME}/.zshrc" "${HOME}/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)";fi
+    if is_userland; then mv "/home/user/.oh-my-zsh" "/root/";fi
     cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc";
     echo "ohmyzsh:True" >> ${lisence};fi
   local theme_array=();cd "${HOME}/.oh-my-zsh/themes";
