@@ -92,7 +92,6 @@ install_ohmyzsh(){
   sed -i '/^ZSH_THEME/d' "${HOME}/.zshrc";local var4='1iZSH_THEME="index"';
   local var5=${var4/"index"/"${theme_array[${choice}]}"};local var6=${var5/".zsh-theme"/};
   sed -i "${var6}" "${HOME}/.zshrc";
-  if is_userland; then mv -f "${HOME}/.zshrc" "/root/.zshrc";fi
   echo;bl -s "Please restart your session...";echo;
   unset file obj choice theme_array;starter;return 0;
 }
