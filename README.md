@@ -48,11 +48,6 @@
 
 **_INSTALLATION..._**
 
-* ᴊᴜꜱᴛ ᴘᴀꜱᴛᴇ ɪᴛ ᴛᴏ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ᴀɴᴅ ʜɪᴛ ᴛʜᴇ ᴇɴᴛᴇʀ ʙᴜᴛᴛᴏɴ.
-```shell
-bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
-```
-
 * ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 ```shell
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
@@ -61,11 +56,6 @@ yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https:/
 * ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
 ```shell
 yes | (sudo apt update && sudo apt install unzip) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
-```
-
-* ᴄᴏᴘʏ ᴀɴᴅ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ʟɪɴᴇ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɪɴꜱᴛᴀʟʟ.ꜱʜ ɪɴᴛᴏ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ᴀɴᴅ ᴇxᴇᴄᴜᴛᴇ ɪᴛ ᴍᴀɴᴜᴀʟʟʏ.
-```shell
-wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";chmod +x install.sh;ls;
 ```
 
 <hr>
