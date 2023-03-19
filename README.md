@@ -39,6 +39,12 @@ wget "https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh";ch
 yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
 ```
 
+
+* ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
+```shell
+yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
+```
+
 <hr>
 
 **_RECOMMENDED..._**
