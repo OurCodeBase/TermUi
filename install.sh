@@ -104,7 +104,7 @@ install_zsh(){
   else pkg_build zsh;
     if is_userland; then
     echo "su" >> ~/.bashrc;echo "zsh" >> /root/.bashrc;
-    mv "/home/user/.termux" "/root/";
+    mv "/home/user/.termux" "/root/" &> /dev/null;
     if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
     echo;bl -s "Please restart your Userland session...";echo;doend;return 0;
     else chsh -s zsh;
