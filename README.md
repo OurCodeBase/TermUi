@@ -62,7 +62,9 @@ yes | (sudo apt update && sudo apt install unzip) && bash -c "$(wget https://raw
 
 **_RECOMMENDED..._**
 * ꜱʜᴏʀᴛᴄᴜᴛ ʙᴜᴛᴛᴏɴꜱ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
+
+ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
 ```shell
-wget https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties && mv -f termux.properties ~/.termux/
+wget "https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties" && mv -f termux.properties ~/.termux/
 ```
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
