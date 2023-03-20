@@ -172,7 +172,7 @@ doend(){
 
 starter(){
   cd;banner;local i=0;echo;
-  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
+  local funcs_array=("Fonts" "Colors" "Zsh" "OhMyZsh" "Zsh_Syntax_Highlighting" "Exit");
   for funcs in ${funcs_array[@]} ; do
   if [[ ${funcs} == "Exit" ]]; then
   echo "[$((i++))] ${funcs}";
@@ -180,7 +180,7 @@ starter(){
   done;echo;read -p ">> " choice;
   case ${choice} in
     0)install_font;;1)install_color;;
-    2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
+    2)install_zsh;;3)install_ohmyzsh;;4)install_zsh_syntax;;
     5)echo;doend;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
 }
