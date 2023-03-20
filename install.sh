@@ -74,16 +74,6 @@ TermDir_Download(){
   echo -ne "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
-install_button(){
-  echo;bl -s "Downloding File...";echo;
-  wget "https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties";
-  if [[ "${?}" == 0 ]]; then
-    mkdir -p "${HOME}/.termux";
-    mv -f termux.properties ~/.termux/;
-    echo;bl -s "Please restart your session...";echo;return 0;
-  else return 1;fi
-}
-
 install_zsh_syntax(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) != *"zsh_syntax:True"* ]]; then
@@ -182,7 +172,7 @@ doend(){
 
 starter(){
   cd;banner;local i=0;echo;
-  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Termux_Buttons" "Exit");
+  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
   for funcs in ${funcs_array[@]} ; do
   if [[ ${funcs} == "Exit" ]]; then
   echo "[$((i++))] ${funcs}";
@@ -191,7 +181,7 @@ starter(){
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
-    5)install_button;;6)echo;doend;;
+    5)echo;doend;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
 }
 
