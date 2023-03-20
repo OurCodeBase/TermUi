@@ -75,11 +75,13 @@ TermDir_Download(){
 }
 
 install_button(){
+  echo;bl -s "Downloding File...";echo;
   wget "https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties";
   if [[ "${?}" == 0 ]]; then
+    mkdir -p "${HOME}/.termux";
     mv -f termux.properties ~/.termux/;
     echo;bl -s "Please restart your session...";echo;return 0;
-  fi
+  else return 1;fi
 }
 
 install_zsh_syntax(){
