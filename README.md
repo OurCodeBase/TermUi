@@ -48,14 +48,9 @@
 
 **_INSTALLATION..._**
 
-* ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
+* ꜱᴄʀɪᴘᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ
 ```shell
-yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
-```
-
-* ꜰᴀꜱᴛᴇʀ ᴍᴇᴛʜᴏᴅ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
-```shell
-yes | (sudo apt update && sudo apt install unzip) && bash -c "$(wget https://raw.githubusercontent.com/strangecode4u/TermUi/main/install.sh -O -)"
+wget -O "install.sh" "https://tinyurl.com/TermUiInstaller";
 ```
 
 <hr>
