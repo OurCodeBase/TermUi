@@ -89,7 +89,6 @@ install_zsh_syntax(){
   if [[ $(cat ${lisence}) != *"zsh_syntax:True"* ]]; then
     if [[ ! -d "${HOME}/.zsh-syntax-highlighting" ]]; then
     dnrepo "zsh-users/zsh-syntax-highlighting" "${HOME}/.zsh-syntax-highlighting";fi
-    sed -i '/^source ${HOME}/.zsh-syntax-highlighting/d' "${HOME}/.zshrc";
     echo "source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "${HOME}/.zshrc";
     echo;bl -s "Please restart your session...";echo;return 0;
   else echo;bl -s "Zsh Syntax Highlighting is already installed...";echo;return 0;fi
