@@ -74,6 +74,25 @@ TermDir_Download(){
   echo -ne "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
+install_button(){
+  wget "https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties";
+  if [[ "${?}" == 0 ]]; then
+    mv -f termux.properties ~/.termux/;
+    echo;bl -s "Please restart your session...";echo;return 0;
+  fi
+}
+
+install_zsh_syntax(){
+  if ! lisence_exist; then TermDir_Download;fi
+  if [[ $(cat ${lisence}) != *"zsh_syntax:True"* ]]; then
+    if [[ ! -d "${HOME}/.zsh-syntax-highlighting" ]]; then
+    dnrepo "zsh-users/zsh-syntax-highlighting" "${HOME}/.zsh-syntax-highlighting";fi
+    sed -i '/^source ${HOME}/.zsh-syntax-highlighting/d' "${HOME}/.zshrc";
+    echo "source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "${HOME}/.zshrc";
+    echo;bl -s "Please restart your session...";echo;return 0;
+  else echo;bl -s "Zsh Syntax Highlighting is already installed...";echo;return 0;fi
+}
+
 install_ohmyzsh(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) != *"ohmyzsh:True"* ]]; then
@@ -162,7 +181,7 @@ doend(){
 
 starter(){
   cd;banner;local i=0;echo;
-  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Exit");
+  local funcs_array=("Fonts" "Colors" "Zsh" "Zsh_Syntax_Highlighting" "OhMyZsh" "Termux_Buttons" "Exit");
   for funcs in ${funcs_array[@]} ; do
   if [[ ${funcs} == "Exit" ]]; then
   echo "[$((i++))] ${funcs}";
@@ -171,7 +190,7 @@ starter(){
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_zsh_syntax;;4)install_ohmyzsh;;
-    5)echo;doend;;
+    5)install_button;;6)echo;doend;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
 }
 
