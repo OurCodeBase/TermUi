@@ -60,6 +60,6 @@ wget -O "install.sh" "https://tinyurl.com/TermUiInstaller";
 
 ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
 ```shell
-wget "https://github.com/strangecode4u/vim-bootstrap/raw/main/termux.properties" && mv -f termux.properties ~/.termux/
+wget -O "termux.properties" "https://tinyurl.com/TermuxVimButtons" && mv -f termux.properties ~/.termux/
 ```
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
