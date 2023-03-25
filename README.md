@@ -61,6 +61,6 @@ chmod +x ${PREFIX}/bin/TermUi
 
 ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
 ```shell
-wget -O "termux.properties" "https://tinyurl.com/TermuxVimButtons" && mv -f termux.properties ~/.termux/
+wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/TermuxVimButtons";
 ```
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
