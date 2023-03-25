@@ -64,6 +64,6 @@ TermUi
 
 ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
 ```shell
-wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/TermuxVimButtons";
+wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/VimButtonsForTermux";
 ```
 <img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
