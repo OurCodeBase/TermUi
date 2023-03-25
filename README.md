@@ -50,7 +50,8 @@
 
 * ꜱᴄʀɪᴘᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ
 ```shell
-wget -O "install.sh" "https://tinyurl.com/TermUiInstaller";
+wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUiInstaller";
+chmod +x ${PREFIX}/bin/TermUi
 ```
 
 <hr>
