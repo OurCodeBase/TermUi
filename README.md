@@ -50,7 +50,7 @@
 
 * ꜱᴄʀɪᴘᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ
 ```shell
-wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUiInstaller";
+wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi";
 chmod +x ${PREFIX}/bin/TermUi;
 
 # To Launch execute TermUi command
