@@ -174,11 +174,10 @@ doend(){
 starter(){
   cd;banner;local i=0;echo;
   local funcs_array=("Fonts" "Colors" "Zsh" "OhMyZsh" "Zsh_Syntax_Highlighting" "Exit");
-  for funcs in ${funcs_array[@]} ; do
-  if [[ ${funcs} == "Exit" ]]; then
-  echo "[$((i++))] ${funcs}";
-  else echo "[$((i++))] Install ${funcs}";fi
-  done;echo;read -p ">> " choice;
+  echo "[0] Install Fonts";echo "[1] Install Colors";
+  echo "[2] Install Zsh";echo "[3] Install OhMyZsh";
+  echo "[4] Install Zsh Syntax Highlighting"
+  echo "[5] Exit";echo;read -p ">> " choice;
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_ohmyzsh;;4)install_zsh_syntax;;
