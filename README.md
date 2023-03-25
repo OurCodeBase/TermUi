@@ -22,9 +22,9 @@
 **_PREVIEW..._**
 
 ᴏɴᴇ ᴅᴀʀᴋ ᴛʜᴇᴍᴇ
-<img src="https://github.com/strangecode4u/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/screenshot.jpg">
+<img src="https://github.com/OurCodeBase/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/screenshot.jpg">
 ᴅʀᴀᴄᴜʟᴀ ᴛʜᴇᴍᴇ
-<img src="https://github.com/strangecode4u/TermUi/blob/98a80dca346c43e863f6665b65d59b1e3b076dd8/screenshot2.jpg">
+<img src="https://github.com/OurCodeBase/TermUi/blob/98a80dca346c43e863f6665b65d59b1e3b076dd8/screenshot2.jpg">
 
 <hr>
 
@@ -50,8 +50,8 @@
 
 * ꜱᴄʀɪᴘᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ
 ```shell
-wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi";
-chmod +x ${PREFIX}/bin/TermUi;
+wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi"
+chmod +x ${PREFIX}/bin/TermUi
 
 # To Launch execute TermUi command
 TermUi
@@ -64,6 +64,6 @@ TermUi
 
 ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
 ```shell
-wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/VimButtonsForTermux";
+wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/VimButtonsForTermux"
 ```
-<img src=https://github.com/strangecode4u/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
+<img src=https://github.com/OurCodeBase/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
