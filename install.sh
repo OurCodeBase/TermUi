@@ -173,7 +173,6 @@ doend(){
 
 starter(){
   cd;banner;local i=0;echo;
-  local funcs_array=("Fonts" "Colors" "Zsh" "OhMyZsh" "Zsh_Syntax_Highlighting" "Exit");
   echo "[0] Install Fonts";echo "[1] Install Colors";
   echo "[2] Install Zsh";echo "[3] Install OhMyZsh";
   echo "[4] Install Zsh Syntax Highlighting"
