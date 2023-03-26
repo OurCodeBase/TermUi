@@ -58,11 +58,6 @@ yes | (apt update && apt upgrade && apt install wget) && wget -O "${PREFIX}/bin/
 yes | (sudo apt update && sudo apt install wget) && wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
 ```
 
-* ꜱᴄʀɪᴘᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ
-```shell
-wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
-```
-
 * ᴛᴏ ᴇxᴇᴄᴜᴛᴇ
 ```shell
 TermUi
