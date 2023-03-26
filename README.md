@@ -48,12 +48,23 @@
 
 **_INSTALLATION..._**
 
+* ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
+```shell
+yes | (apt update && apt upgrade && apt install wget) && wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
+```
+
+* ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
+```shell
+yes | (sudo apt update && sudo apt install wget) && wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
+```
+
 * ꜱᴄʀɪᴘᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ
 ```shell
-wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi"
-chmod +x ${PREFIX}/bin/TermUi
+wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
+```
 
-# To Launch execute TermUi command
+* ᴛᴏ ᴇxᴇᴄᴜᴛᴇ
+```shell
 TermUi
 ```
 
