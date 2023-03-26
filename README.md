@@ -50,17 +50,17 @@
 
 * ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 ```shell
-yes | (apt update && apt upgrade && apt install wget) && wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
+yes | (apt update && apt upgrade && apt install wget) && wget -O "TermUi" "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
 * ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
 ```shell
-yes | (sudo apt update && sudo apt install wget) && wget -O "${PREFIX}/bin/TermUi" "https://tinyurl.com/TermUi" && chmod +x ${PREFIX}/bin/TermUi
+yes | (sudo apt update && sudo apt install wget) && wget -O "TermUi" "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
 * ᴛᴏ ᴇxᴇᴄᴜᴛᴇ
 ```shell
-TermUi
+./TermUi
 ```
 
 <hr>
