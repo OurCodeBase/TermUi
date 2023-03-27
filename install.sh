@@ -36,7 +36,7 @@ pkg_build(){
       apt-get install "${pkg_info}" -y;
     else sudo apt install "${pkg_info}" -y;fi
   else apt-get install "${pkg_info}" -y;fi
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;exit;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;doend;fi
   echo -ne "${enc}";return 0;
 }
 
@@ -46,7 +46,7 @@ dnrepo(){
   if [[ -z "${_file_link}" ]]; then echo;bl -a "File parameter is Empty...";echo;return 1;fi
   prova+="${_repo_link}.git ${_file_link} --depth 1";
   echo;bl -s "Cloning ${_repo_link}...";echo -e "${pearly}";eval "${prova}";
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Repository Download Failed...";echo;exit;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Repository Download Failed...";echo;doend;fi
   echo -ne "${enc}";return 0;
 }
 
@@ -69,11 +69,11 @@ TermDir_Download(){
   if [[ ! -f "TermUi.zip" ]]; then
     local prova="wget https://github.com/OurCodeBase/TermUi/raw/main/TermUi.zip";
     echo;bl -s "Downloading File...";echo -e "${pearly}${pearly}";(eval "${prova}");
-    if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;exit;fi
+    if [[ "${?}" != 0 ]]; then echo;bl -a "Download Failed...";echo;doend;fi
     echo -e "${enc}";
   else echo;fi
   bl -s "Unpacking Files...";echo -e "${pearly}";(unzip -d ${HOME} TermUi.zip);
-  if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;exit;fi
+  if [[ "${?}" != 0 ]]; then echo;bl -a "Unpacking Failed...";echo;doend;fi
   echo -ne "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
@@ -124,7 +124,7 @@ install_ohmyzsh(){
 install_zsh(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
-  echo;bl -s "Zsh is already installed...";echo;exit;
+  echo;bl -s "Zsh is already installed...";echo;doend;
   else pkg_build zsh;
     if is_userland; then
     echo "su" >> /home/user/.bashrc;echo "/bin/zsh" >> /root/.bashrc;
