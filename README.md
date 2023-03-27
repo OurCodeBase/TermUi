@@ -22,9 +22,9 @@
 **_PREVIEW..._**
 
 ᴏɴᴇ ᴅᴀʀᴋ ᴛʜᴇᴍᴇ
-<img src="https://github.com/OurCodeBase/TermUi/blob/b4fa921762fce845198d606b32f34c0485ed53d7/screenshot.jpg">
+![First Short](https://github.com/OurCodeBase/TermUi/raw/main/screenshot.jpg)
 ᴅʀᴀᴄᴜʟᴀ ᴛʜᴇᴍᴇ
-<img src="https://github.com/OurCodeBase/TermUi/blob/98a80dca346c43e863f6665b65d59b1e3b076dd8/screenshot2.jpg">
+![Second Shot](https://github.com/OurCodeBase/TermUi/raw/main/screenshot.jpg)
 
 <hr>
 
@@ -40,21 +40,21 @@
 **_PACKAGES..._**
 
 ᴛʜᴇꜱᴇ ᴘᴀᴄᴋᴀɢᴇꜱ ᴀʀᴇ ᴜꜱᴇᴅ ɪɴ ᴛʜɪꜱ ᴛᴏᴏʟ. ɪɴᴄʟᴜᴅɪɴɢ ᴢꜱʜ, ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ.
-* `𝚞𝚗𝚣𝚒𝚙`
-* `𝚠𝚐𝚎𝚝`
-* `𝚐𝚒𝚝`
+* [X] `𝚞𝚗𝚣𝚒𝚙`
+* [X] `𝚠𝚐𝚎𝚝`
+* [X] `𝚐𝚒𝚝`
 
 <hr>
 
 **_INSTALLATION..._**
 
 * ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx
-```shell
+```bash
 yes | (apt update && apt upgrade && apt install wget) && wget "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
 * ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ
-```shell
+```bash
 yes | (sudo apt update && sudo apt install wget unzip) && wget "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
@@ -69,7 +69,7 @@ yes | (sudo apt update && sudo apt install wget unzip) && wget "https://tinyurl.
 * ꜱʜᴏʀᴛᴄᴜᴛ ʙᴜᴛᴛᴏɴꜱ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
 
 ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
-```shell
+```bash
 wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/vimbuttonproperties"
 ```
 <img src=https://github.com/OurCodeBase/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
