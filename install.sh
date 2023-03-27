@@ -31,7 +31,10 @@ is_userland(){
 pkg_build(){
   local pkg_info=${1};
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
-  if is_userland; then sudo apt install "${pkg_info}" -y;
+  if is_userland; then
+    if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
+      apt-get install "${pkg_info}" -y;
+    else sudo apt install "${pkg_info}" -y;fi
   else apt-get install "${pkg_info}" -y;fi
   if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;exit;fi
   echo -ne "${enc}";return 0;
