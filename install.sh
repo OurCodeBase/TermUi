@@ -74,6 +74,17 @@ TermDir_Download(){
   echo -ne "${enc}";rm TermUi.zip;echo "TermDir:True" >> ${lisence};return 0;
 }
 
+install_zsh_autocompl(){
+  if ! lisence_exist; then TermDir_Download;fi
+  if [[ $(cat ${lisence}) != *"zsh_autocompl:True"* ]]; then
+    if [[ ! -d "${HOME}/.zsh-autocomplete" ]]; then
+    dnrepo "marlonrichert/zsh-autocomplete" "${HOME}/.zsh-autocomplete";fi
+    echo "source ${HOME}/.zsh-autocomplete/zsh-autocomplete.plugin.zsh" >> "${HOME}/.zshrc";
+    echo "zsh_autocompl:True" >> ${lisence};
+    echo;bl -s "Please restart your session...";echo;doend; return 0;
+  else echo;bl -s "Zsh Autocompletion is already installed...";echo;doend;fi
+}
+
 install_zsh_syntax(){
   if ! lisence_exist; then TermDir_Download;fi
   if [[ $(cat ${lisence}) != *"zsh_syntax:True"* ]]; then
