@@ -53,7 +53,7 @@ yes | (apt update && apt upgrade && apt install wget) && wget "https://tinyurl.c
 yes | (sudo apt update && sudo apt install wget unzip) && wget "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 ## Usage
-
+Execute the bash script using the command given below
 ```bash
 bash TermUi
 ```
