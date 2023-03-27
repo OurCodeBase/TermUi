@@ -186,12 +186,13 @@ starter(){
   cd;banner;local i=0;echo;
   echo "[0] Install Fonts";echo "[1] Install Colors";
   echo "[2] Install Zsh";echo "[3] Install OhMyZsh";
-  echo "[4] Install Zsh Syntax Highlighting"
-  echo "[5] Exit";echo;read -p ">> " choice;
+  echo "[4] Install Zsh Syntax Highlighting";
+  echo "[5] Install Zsh Autocompletion";
+  echo "[6] Exit";echo;read -p ">> " choice;
   case ${choice} in
     0)install_font;;1)install_color;;
     2)install_zsh;;3)install_ohmyzsh;;4)install_zsh_syntax;;
-    5)echo;doend;;
+    5)install_zsh_autocompl;;6)echo;doend;;
     *)echo;bl -a "Invalid Input...";echo;return 1;;esac
 }
 
