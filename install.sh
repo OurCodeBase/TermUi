@@ -127,6 +127,7 @@ install_zsh(){
     echo "su" >> /home/user/.bashrc;echo "/bin/zsh" >> /root/.bashrc;
     if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
     mv "/home/user/.termux" "/root/" &> /dev/null;
+    if [[ -f "/home/user/.zshrc" ]]; then mv /home/user/.zshrc /root/;fi
     echo;bl -s "Please restart your Userland session...";echo;doend;return 0;
     else chsh -s zsh;
     if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
