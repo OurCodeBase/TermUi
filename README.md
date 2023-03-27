@@ -48,14 +48,14 @@
 
 **_INSTALLATION..._**
 
-* ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx)
+* ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx
 ```shell
-yes | (apt update && apt upgrade && apt install wget) && wget -O "TermUi" "https://tinyurl.com/TermUi" && chmod 777 TermUi
+yes | (apt update && apt upgrade && apt install wget) && wget "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
-* ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
+* ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ
 ```shell
-yes | (sudo apt update && sudo apt install wget unzip) && wget -O "TermUi" "https://tinyurl.com/TermUi" && chmod 777 TermUi
+yes | (sudo apt update && sudo apt install wget unzip) && wget "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
 * ᴛᴏ ᴇxᴇᴄᴜᴛᴇ
@@ -70,6 +70,6 @@ yes | (sudo apt update && sudo apt install wget unzip) && wget -O "TermUi" "http
 
 ɪꜰ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴠɪᴍ ᴏʀ ɴᴇᴏᴠɪᴍ ᴛʜᴇꜱᴇ ʙᴜᴛᴛᴏɴꜱ ᴀʀᴇ ᴠᴇʀʏ ᴜꜱᴇꜰᴜʟ ᴛᴏ ʏᴏᴜ.
 ```shell
-wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/VimButtonsForTermux"
+wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/vimbuttonproperties"
 ```
 <img src=https://github.com/OurCodeBase/vim-bootstrap/blob/da34adb04dec35ade0162e5078be60d5f944a056/buttons.jpg>
