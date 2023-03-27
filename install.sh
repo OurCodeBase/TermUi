@@ -124,7 +124,7 @@ install_zsh(){
   echo;bl -s "Zsh is already installed...";echo;exit;
   else pkg_build zsh;
     if is_userland; then
-    echo "su" >> home/user/.bashrc;echo "zsh" >> /root/.bashrc;
+    echo "su" >> /home/user/.bashrc;echo "zsh" >> /root/.bashrc;
     mv "/home/user/.termux" "/root/" &> /dev/null;
     if [[ ${?} == 0 ]]; then echo "zsh:True" >> ${lisence};fi
     echo;bl -s "Please restart your Userland session...";echo;doend;return 0;
