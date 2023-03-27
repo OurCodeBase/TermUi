@@ -55,7 +55,7 @@ yes | (apt update && apt upgrade && apt install wget) && wget -O "TermUi" "https
 
 * ᴏɴᴇ ᴄʟɪᴄᴋ (ᴏɴʟʏ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ)
 ```shell
-yes | (sudo apt update && sudo apt install wget) && wget -O "TermUi" "https://tinyurl.com/TermUi" && chmod 777 TermUi
+yes | (sudo apt update && sudo apt install wget unzip) && wget -O "TermUi" "https://tinyurl.com/TermUi" && chmod 777 TermUi
 ```
 
 * ᴛᴏ ᴇxᴇᴄᴜᴛᴇ
