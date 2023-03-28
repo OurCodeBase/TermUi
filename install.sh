@@ -33,9 +33,9 @@ pkg_build(){
   echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
   if is_userland; then
     if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
-      apt-get install "${pkg_info}" -y;
+      apt install "${pkg_info}" -y;
     else sudo apt install "${pkg_info}" -y;fi
-  else apt-get install "${pkg_info}" -y;fi
+  else apt install "${pkg_info}" -y;fi
   if [[ "${?}" != 0 ]]; then echo;bl -a "Package Installation Failed...";echo;doend;fi
   echo -ne "${enc}";return 0;
 }
