@@ -63,7 +63,7 @@ bash TermUi
 
 If you want vim compatible buttons for ᴛᴇʀᴍᴜx then the installation code is given below
 
-![Short](https://github.com/OurCodeBase/vim-bootstrap/raw/main/buttons.jpg)
+![Short](https://github.com/OurCodeBase/OurCodeBase/raw/main/buttons.jpg)
 
 ```bash
 wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/vimbuttonproperties"
