@@ -31,7 +31,7 @@ is_userland(){
 pkg_build(){
   local pkg_info=${1};
   echo;bl -s "Installing ${pkg_info}...";echo -e "\e[0;2m\e[0;2m"
-  if [[ -d "/host-rootfs/data/data/tech.ula/files/home" ]]; then
+  if [[ -d "/host-rootfs/data/data/tech.ula/files" ]]; then
     if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
       apt install "${pkg_info}" -y;
     else sudo apt install "${pkg_info}" -y;fi
