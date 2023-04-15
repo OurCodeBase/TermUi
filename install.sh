@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# handling error
+set -e
+
 # Variables
 red="\e[0;31m";green="\e[0;32m";blue="\e[0;34m";TermDir="${HOME}/.termux";
 alert="\e[0;31m\e[1m[∆]";success="\e[0;32m\e[1m[√]";
@@ -30,8 +33,8 @@ is_userland(){
 
 pkg_build(){
   local pkg_info=${1};
-  echo;bl -s "Installing ${pkg_info}...";echo -e "${pearly}${pearly}";
-  if is_userland; then
+  echo;bl -s "Installing ${pkg_info}...";echo -e "\e[0;2m\e[0;2m"
+  if [[ -d "/host-rootfs/data/data/tech.ula/files/home" ]]; then
     if [[ $(cat ${lisence}) == *"zsh:True"* ]]; then
       apt install "${pkg_info}" -y;
     else sudo apt install "${pkg_info}" -y;fi
