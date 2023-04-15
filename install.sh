@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# handling error
-set -e
-
 # Variables
 red="\e[0;31m";green="\e[0;32m";blue="\e[0;34m";TermDir="${HOME}/.termux";
 alert="\e[0;31m\e[1m[∆]";success="\e[0;32m\e[1m[√]";
