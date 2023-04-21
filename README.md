@@ -1,31 +1,24 @@
 # TermUi
-ᴛʜɪꜱ ᴛᴏᴏʟ ᴄᴀɴ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ᴛᴇʀᴍɪɴᴀʟ ʟᴏᴏᴋꜱ ɪɴ ꜱᴇᴄᴏɴᴅꜱ.
+TermUi is a tool 🔧 which can be used to automatically install themes 🖌️ zsh, and many more in
+[Termux](https://github.com/termux/termux-app) and 
+[UserLand](https://github.com/CypherpunkArmory/UserLAnd) Terminals.
+You have to choose functions and the tool automate all tasks, and give you instructions about installed packages and errors.
 
-ᴏɴᴇ ᴛᴏᴜᴄʜ ᴛᴇʀᴍɪɴᴀʟ ᴄᴏꜱᴛᴜᴍɪᴢᴀᴛɪᴏɴ. ᴛᴇʀᴍɪɴᴀʟ ᴜɪ ꜰᴏʀ ᴜꜱᴇʀʟᴀɴᴅ ᴀɴᴅ ᴛᴇʀᴍᴜx ᴀᴘᴘꜱ ɪɴᴄʟᴜᴅɪɴɢ ᴢꜱʜ, ᴢꜱʜ ꜱʏɴᴛᴀx ʜɪɢʜʟɪɢʜᴛɪɴɢ, ᴛʜᴇᴍᴇꜱ, ꜰᴏɴᴛꜱ ᴀɴᴅ ᴍᴀɴʏ ᴍᴏʀᴇ.
-
-
-## Features
-
-|      **_Features_**     | **_Count_** |
-|:-----------------------:|:-----------:|
-|      ᴄᴏʟᴏʀ ꜱᴄʜᴇᴍᴇꜱ      |     _86_    |
-|          ꜰᴏɴᴛꜱ          |     _21_    |
-|           ᴢꜱʜ           |      ✅      |
-| ᴢꜱʜ ꜱʏɴᴛᴀx ʜɪɢʜʟɪɢʜᴛɪɴɢ |      ✅      |
-|         ᴏʜᴍʏᴢꜱʜ         |      ✅      |
-|    ᴢꜱʜ ᴀᴜᴛᴏᴄᴏᴍᴘʟᴇᴛɪᴏɴ   |      ✅      |
-|          ᴀꜱᴄɪɪ          |      ❌      |
-
-## Shorts
-ᴏɴᴇ ᴅᴀʀᴋ ᴛʜᴇᴍᴇ
-![First Short](https://github.com/OurCodeBase/TermUi/raw/main/screenshot.jpg)
-ᴅʀᴀᴄᴜʟᴀ ᴛʜᴇᴍᴇ
-![Second Shot](https://github.com/OurCodeBase/TermUi/raw/main/screenshot.jpg)
+## Badges
+![Maintained](https://img.shields.io/badge/Maintained-Yes-teal?style=for-the-badge&logo=github)
+![Termux](https://img.shields.io/badge/termux-seagreen?style=for-the-badge&logo=gnometerminal)
+![UserLand](https://img.shields.io/badge/userland-seagreen?style=for-the-badge&logo=android)
 
 ## Authors
-
 - [@OurCodeBase](https://www.github.com/OurCodeBase)
 
+## Features
+- Incredible 86 ColorSchemes 🌈
+- Fantastic 21 Fonts
+- Fabulous Shell [zsh](https://www.zsh.org) 
+- zsh syntax highlighting
+- Command Line [ohmyzsh](https://ohmyz.sh)
+- completion zsh autocompletion
 
 ## Necessary
 
@@ -35,11 +28,6 @@ To run this project, you will need to satisfy the following points
 - Your terminal should work properly
 - You have UserLAnd or Termux
 
-This tool uses these packages make sure that you have already installed it. If you don't have these packages, don't worry this tool will automatically download all packages.
-- wget
-- git
-- unzip
-- zsh
 ## Installation
 
 Install TermUi with commands below
@@ -61,8 +49,7 @@ bash TermUi
 
 ## Related
 
-If you want vim compatible buttons for ᴛᴇʀᴍᴜx then the installation code is given below
-
+If you want compatible buttons ⌨️ for neovim for shortcut completions then the installation code is given below 👇
 ![Short](https://github.com/OurCodeBase/cooked.nvim/raw/main/images/vimcompatiblebuts.jpg)
 
 ```bash
