@@ -66,5 +66,5 @@ If you want vim compatible buttons for ᴛᴇʀᴍᴜx then the installation cod
 ![Short](https://github.com/OurCodeBase/cooked.nvim/raw/main/images/vimcompatiblebuts.jpg)
 
 ```bash
-wget -O "${HOME}/.termux/termux.properties" "https://tinyurl.com/vimbuttonproperties"
+wget -O "/data/data/com.termux/files/home/.termux/termux.properties" "raw.githubusercontent.com/OurCodeBase/cooked.nvim/main/termux.properties"
 ```
