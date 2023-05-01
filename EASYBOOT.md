@@ -13,5 +13,5 @@ Terminal.
 - Make sure that you have you have a Working Termux.
 - This command is incompatible with UserLand.
 ```bash
-yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/OurCodeBase/TermUi/main/assets/boot.sh -O -)"
+yes | (apt update && apt upgrade && apt install wget) && bash -c "$(wget https://raw.githubusercontent.com/OurCodeBase/TermUi/main/assets/easyboot.sh -O -)"
 ```
