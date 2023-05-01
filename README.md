@@ -30,7 +30,9 @@ To run this project, you will need to satisfy the following points
 
 ## Installation
 
-Install TermUi with commands below
+Well, You can [check this out](EASYBOOT.md) to instantly setup Termux.
+
+Install TermUi with mannual method using commands below 👇
 * ᴏɴʟʏ ꜰᴏʀ ᴛᴇʀᴍᴜx
 ```bash
 yes | (apt update && apt upgrade && apt install wget) && wget "https://tinyurl.com/TermUi" && chmod 777 TermUi
